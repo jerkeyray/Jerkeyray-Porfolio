@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
-import { techIcons, fallbackIcon } from "@/lib/techIcons"; // Import techIcons and fallbackIcon
+import { techIcons } from "@/lib/techIcons"; // Import techIcons and fallbackIcon
 
 interface ProjectCardProps {
   title: string;
