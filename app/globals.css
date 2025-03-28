@@ -132,3 +132,51 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 180s linear infinite; /* Slower animation for smoother scrolling */
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 180s linear infinite; /* Slower animation for smoother scrolling */
+}
+
+.marquee-container {
+  display: flex;
+  width: max-content; /* Dynamic width to fit content */
+  animation: marquee 180s linear infinite;
+  gap: 1.5rem; /* Added spacing between icons */
+}
+
+.marquee-container-reverse {
+  display: flex;
+  width: max-content; /* Dynamic width to fit content */
+  animation: marquee-reverse 180s linear infinite;
+  gap: 1.5rem; /* Added spacing between icons */
+}
+
+.marquee-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack rows vertically */
+  gap: 2rem; /* Add vertical spacing between rows */
+  overflow: hidden; /* Prevent content from flowing into the background */
+  width: 100%; /* Ensure the rows span the full width of the screen */
+}
