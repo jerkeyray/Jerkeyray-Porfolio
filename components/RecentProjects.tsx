@@ -31,7 +31,9 @@ export default function RecentProjects() {
   }, [api]);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center py-12 bg-[#F9F9F9]">
+    <section className="min-h-screen flex flex-col items-center justify-center py-12 bg-[#FFFFFF]">
+      {" "}
+      {/* Changed to #FFFFFF */}
       {/* Title */}
       <div className="relative w-full max-w-2xl mx-4 p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] transform -rotate-2 overflow-hidden mb-8">
         <div
@@ -45,7 +47,6 @@ export default function RecentProjects() {
           Recent Projects
         </h2>
       </div>
-
       {/* Carousel */}
       <div className="relative w-full max-w-6xl px-4">
         <Carousel
@@ -78,7 +79,6 @@ export default function RecentProjects() {
           </CarouselNext>
         </Carousel>
       </div>
-
       {/* Dashed Card Indicator */}
       <div className="mt-8 flex justify-center space-x-2">
         {[...projects, { isLinkCard: true }].map((_, index) => (

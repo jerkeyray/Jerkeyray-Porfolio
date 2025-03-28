@@ -1,12 +1,13 @@
 import AboutMe from "@/components/AboutMe";
 import RecentProjects from "@/components/RecentProjects";
+import TechSkills from "@/components/TechSkills";
 import React from "react";
 
 const Home = () => {
   return (
-    <main className="flex flex-col items-center scroll-smooth">
+    <main className="flex flex-col items-center scroll-smooth bg-[#FFFFFF]">
       {" "}
-      {/* Added scroll-smooth */}
+      {/* Ensure consistent white background */}
       {/* About Me Section */}
       <section className="w-full">
         <AboutMe />
@@ -15,6 +16,7 @@ const Home = () => {
       <section className="w-full">
         <RecentProjects />
       </section>
+      <TechSkills />
     </main>
   );
 };

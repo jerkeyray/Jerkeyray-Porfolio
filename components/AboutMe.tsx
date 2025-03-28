@@ -5,7 +5,9 @@ import Image from "next/image";
 
 const AboutMe = () => {
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center py-6 bg-[#F9F9F9]">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center py-6 bg-[#FFFFFF]">
+      {" "}
+      {/* Changed to #FFFFFF */}
       {/* Profile Image */}
       <div className="w-40 h-40 md:w-48 md:h-48 bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-full shadow-[8px_8px_0_#0F0F0F] overflow-hidden flex-shrink-0">
         <Image
@@ -16,7 +18,6 @@ const AboutMe = () => {
           className="w-full h-full object-cover"
         />
       </div>
-
       {/* Manga Panel */}
       <div className="relative w-full max-w-2xl mx-4 p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] transform -rotate-2 overflow-hidden mt-8 md:mt-0 md:ml-8">
         {/* Subtle Screentone Background */}
