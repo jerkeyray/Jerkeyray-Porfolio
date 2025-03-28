@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const AboutMe = () => {
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center py-6 ">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center py-6 bg-[#F9F9F9]">
       {/* Profile Image */}
       <div className="w-40 h-40 md:w-48 md:h-48 bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-full shadow-[8px_8px_0_#0F0F0F] overflow-hidden flex-shrink-0">
         <Image
