@@ -1,7 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
-const blogs = []; // Empty array to simulate no blogs available
+interface Blog {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+}
+
+const blogs: Blog[] = []; // Empty array to simulate no blogs available
 
 const RecentBlogs = () => {
   return (
