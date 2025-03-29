@@ -31,11 +31,9 @@ export default function RecentProjects() {
   }, [api]);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center py-12 bg-[#FFFFFF]">
-      {" "}
-      {/* Changed to #FFFFFF */}
+    <section className="min-h-screen flex flex-col items-center justify-center py-12 bg-[#FFFFFF] px-4 md:px-8">
       {/* Title */}
-      <div className="relative w-full max-w-2xl mx-4 p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F]  overflow-hidden mb-8">
+      <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden mb-8">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{
@@ -59,14 +57,19 @@ export default function RecentProjects() {
         >
           <CarouselContent>
             {projects.map((project, index) => (
-              <CarouselItem key={index} className="basis-full">
-                <div className="p-4 flex justify-center">
+              <CarouselItem
+                key={index}
+                className="basis-full flex justify-center"
+              >
+                <div className="w-[90%] md:w-[75%] lg:w-[65%] aspect-video">
+                  {/* Maintain aspect ratio using aspect-video */}
                   <ProjectCard {...project} />
                 </div>
               </CarouselItem>
             ))}
-            <CarouselItem className="basis-full">
-              <div className="p-4 flex justify-center items-center h-full">
+            <CarouselItem className="basis-full flex justify-center">
+              <div className="w-[90%] md:w-[75%] lg:w-[65%] aspect-video">
+                {/* Maintain aspect ratio using aspect-video */}
                 <ProjectsLinkCard />
               </div>
             </CarouselItem>

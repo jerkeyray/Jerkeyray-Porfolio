@@ -8,21 +8,24 @@ import React from "react";
 const Home = () => {
   return (
     <main className="flex flex-col items-center scroll-smooth bg-[#FFFFFF]">
-      {" "}
-      {/* Ensure consistent white background */}
       {/* About Me Section */}
-      <section className="w-full">
+      <section className="w-full px-4 md:px-8">
         <AboutMe />
       </section>
       {/* Recent Projects Section */}
-      <section className="w-full">
+      <section className="w-full px-4 md:px-8">
         <RecentProjects />
       </section>
-      <TechSkills />
-      <section>
+      {/* Tech Skills Section */}
+      <section className="w-full px-4 md:px-8">
+        <TechSkills />
+      </section>
+      {/* Recent Blogs Section */}
+      <section className="w-full px-4 md:px-8">
         <RecentBlogs />
       </section>
-      <section>
+      {/* Contact Me Section */}
+      <section className="w-full px-4 md:px-8">
         <ContactMe />
       </section>
     </main>

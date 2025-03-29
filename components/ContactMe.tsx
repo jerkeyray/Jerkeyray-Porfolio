@@ -5,9 +5,9 @@ export default function ContactMe() {
   const [showEmail, setShowEmail] = useState(false);
 
   return (
-    <section className="py-12 flex flex-col items-center justify-center">
+    <section className="py-12 flex flex-col items-center justify-center px-4 md:px-8">
       {/* Compact Contact Me Container */}
-      <div className="relative w-full max-w-3xl mx-6 p-12 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden flex flex-col items-center">
+      <div className="relative w-full max-w-3xl mx-auto p-12 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden flex flex-col items-center">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{

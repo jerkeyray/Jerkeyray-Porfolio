@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
-import { techIcons } from "@/lib/techIcons"; // Import techIcons and fallbackIcon
+import { techIcons } from "@/lib/techIcons";
 
 interface ProjectCardProps {
   title: string;
@@ -22,15 +22,17 @@ export default function ProjectCard({
   githubUrl,
 }: ProjectCardProps) {
   return (
-    <div className="flex-shrink-0 w-[95%] md:w-[75%] lg:w-[65%] bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden snap-center">
-      <div className="relative w-full h-96">
+    <div className="flex-shrink-0 w-[90%] md:w-[75%] lg:w-[65%] bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden snap-center">
+      {/* Image Container with Aspect Ratio */}
+      <div className="relative w-full aspect-video">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover" // Ensures the image covers the area without distortion
+          className="object-cover rounded-t-md" // Ensures the image covers the area without distortion
         />
       </div>
+      {/* Content */}
       <div className="p-6 space-y-4">
         <div className="flex items-center justify-between">
           <Link href={liveUrl || "#"} target="_blank">
@@ -47,15 +49,15 @@ export default function ProjectCard({
         <p className="text-gray-600 text-lg">{description}</p>
         <div className="flex flex-wrap gap-4">
           {tech.map((techItem, i) => {
-            const Icon = techIcons[techItem] || null; // Get the corresponding icon or null
+            const Icon = techIcons[techItem] || null;
             return (
               <div key={i} className="flex items-center gap-2">
                 {Icon ? (
-                  <Icon className="text-black text-2xl" /> // Render the icon if available
+                  <Icon className="text-black text-2xl" />
                 ) : (
                   <span className="text-lg text-gray-800 font-semibold">
                     {techItem}
-                  </span> // Render bold and larger text if icon is not available
+                  </span>
                 )}
               </div>
             );
