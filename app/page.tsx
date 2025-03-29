@@ -1,4 +1,6 @@
 import AboutMe from "@/components/AboutMe";
+import ContactMe from "@/components/ContactMe";
+import RecentBlogs from "@/components/RecentBlogs";
 import RecentProjects from "@/components/RecentProjects";
 import TechSkills from "@/components/TechSkills";
 import React from "react";
@@ -17,6 +19,12 @@ const Home = () => {
         <RecentProjects />
       </section>
       <TechSkills />
+      <section>
+        <RecentBlogs />
+      </section>
+      <section>
+        <ContactMe />
+      </section>
     </main>
   );
 };
