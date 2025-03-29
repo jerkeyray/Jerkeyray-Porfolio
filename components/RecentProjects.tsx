@@ -74,10 +74,11 @@ export default function RecentProjects() {
               </div>
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
+          {/* Hide buttons on mobile */}
+          <CarouselPrevious className="hidden md:flex absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
             ←
           </CarouselPrevious>
-          <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
+          <CarouselNext className="hidden md:flex absolute right-8 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
             →
           </CarouselNext>
         </Carousel>
