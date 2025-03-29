@@ -59,25 +59,25 @@ export default function RecentProjects() {
             {projects.map((project, index) => (
               <CarouselItem
                 key={index}
-                className="basis-full flex justify-center"
+                className="basis-full flex justify-center items-center"
               >
-                <div className="w-[90%] md:w-[75%] lg:w-[65%] aspect-video">
+                <div className="w-[90%] md:w-[75%] lg:w-[65%] xl:w-[60%] h-auto">
                   {/* Maintain aspect ratio using aspect-video */}
                   <ProjectCard {...project} />
                 </div>
               </CarouselItem>
             ))}
-            <CarouselItem className="basis-full flex justify-center">
-              <div className="w-[90%] md:w-[75%] lg:w-[65%] aspect-video">
+            <CarouselItem className="basis-full flex justify-center items-center">
+              <div className="w-[90%] md:w-[75%] lg:w-[65%] xl:w-[60%] h-auto">
                 {/* Maintain aspect ratio using aspect-video */}
                 <ProjectsLinkCard />
               </div>
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-2 border-[#0F0F0F] rounded-full shadow-[4px_4px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] transition-all">
+          <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
             ←
           </CarouselPrevious>
-          <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-2 border-[#0F0F0F] rounded-full shadow-[4px_4px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] transition-all">
+          <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
             →
           </CarouselNext>
         </Carousel>

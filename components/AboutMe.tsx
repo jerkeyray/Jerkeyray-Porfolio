@@ -1,9 +1,17 @@
+"use client"; // Mark this as a client component
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
 
 const AboutMe = () => {
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById("contact-me");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="min-h-screen flex flex-col md:flex-row items-center justify-center py-6 bg-[#FFFFFF] px-4 md:px-8">
       {/* Profile Image */}
@@ -69,12 +77,12 @@ const AboutMe = () => {
         </div>
         {/* Contact Me Button */}
         <div className="relative mt-8 flex justify-center z-10">
-          <a
-            href="/contact-me"
+          <button
+            onClick={handleScrollToContact}
             className="px-6 py-3 bg-[#FFFFFF] text-[#0F0F0F] text-lg font-bold rounded-md border-4 border-[#0F0F0F] shadow-[4px_4px_0_#0F0F0F] hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[4px_4px_0_#0056B3] transition-all"
           >
             Contact Me
-          </a>
+          </button>
         </div>
       </div>
     </section>

@@ -25,7 +25,7 @@ const Home = () => {
         <RecentBlogs />
       </section>
       {/* Contact Me Section */}
-      <section className="w-full px-4 md:px-8">
+      <section id="contact-me" className="w-full px-4 md:px-8">
         <ContactMe />
       </section>
     </main>

@@ -22,7 +22,7 @@ export default function ProjectCard({
   githubUrl,
 }: ProjectCardProps) {
   return (
-    <div className="flex-shrink-0 w-[90%] md:w-[75%] lg:w-[65%] bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden snap-center">
+    <div className="flex-shrink-0 w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden snap-center mx-auto md:h-[28rem] lg:h-[32rem]">
       {/* Image Container with Aspect Ratio */}
       <div className="relative w-full aspect-video">
         <Image
