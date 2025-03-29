@@ -22,7 +22,6 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const session = await auth();
-
   if (!session || session.user.id !== ALLOWED_GITHUB_ID) {
     return NextResponse.json(
       { error: "Forbidden: Only the admin can create blogs" },
@@ -39,7 +38,15 @@ export async function POST(request: Request) {
       );
     }
 
-    const newPost = await prisma.post.create({ data: { title, content } });
+    // Generate slug from title
+    const slug = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)+/g, "");
+
+    const newPost = await prisma.post.create({
+      data: { title, content, slug },
+    });
     return NextResponse.json(newPost, { status: 201 });
   } catch (error) {
     console.error("Error creating post:", error);
