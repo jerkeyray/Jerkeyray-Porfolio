@@ -40,7 +40,7 @@ const AboutMe = () => {
         </p>
         {/* Speech Bubble */}
         <div className="relative mt-6 p-4 bg-[#F9F9F9] border-4 border-[#0F0F0F] rounded-md shadow-[6px_6px_0_#0F0F0F] text-center text-lg md:text-xl font-medium z-10">
-          <p>"Turning coffee into code, one line at a time!"</p>
+          <p>&quot;Turning coffee into code, one line at a time!&quot;</p>
         </div>
         {/* Social Media Links */}
         <div className="relative mt-8 flex justify-center space-x-6 z-10">
