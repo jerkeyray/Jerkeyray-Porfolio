@@ -6,13 +6,11 @@ const ALLOWED_EMAIL = process.env.ALLOWED_EMAIL || "";
 
 export async function GET(
   _: Request,
-  context: { params: Promise<{ slug: string }> } // ✅ Fix: Ensure params is awaited
+  context: { params: { slug: string } } // ❌ FIXED: `params` is not a Promise
 ) {
-  const params = await context.params; // ✅ Await params before using
-
   try {
     const post = await prisma.post.findUnique({
-      where: { slug: params.slug },
+      where: { slug: context.params.slug },
     });
 
     if (!post)
@@ -30,10 +28,8 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  context: { params: Promise<{ slug: string }> } // ✅ Fix: Await params
+  context: { params: { slug: string } } // ❌ FIXED: `params` is not a Promise
 ) {
-  const params = await context.params; // ✅ Await params before using
-
   const session = await auth();
 
   if (!session || session.user?.email !== ALLOWED_EMAIL) {
@@ -53,7 +49,7 @@ export async function PUT(
     }
 
     const updatedPost = await prisma.post.update({
-      where: { slug: params.slug },
+      where: { slug: context.params.slug },
       data: { title, content },
     });
 
@@ -69,10 +65,8 @@ export async function PUT(
 
 export async function DELETE(
   _: Request,
-  context: { params: Promise<{ slug: string }> } // ✅ Fix: Await params
+  context: { params: { slug: string } } // ❌ FIXED: `params` is not a Promise
 ) {
-  const params = await context.params; // ✅ Await params before using
-
   const session = await auth();
 
   if (!session || session.user?.email !== ALLOWED_EMAIL) {
@@ -83,7 +77,7 @@ export async function DELETE(
   }
 
   try {
-    await prisma.post.delete({ where: { slug: params.slug } });
+    await prisma.post.delete({ where: { slug: context.params.slug } });
     return NextResponse.json({ message: "Post deleted successfully" });
   } catch (error) {
     console.error("DELETE /post error:", error);
