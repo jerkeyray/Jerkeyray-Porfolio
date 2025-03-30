@@ -6,8 +6,10 @@ const ALLOWED_EMAIL = process.env.ALLOWED_EMAIL || "";
 
 export async function GET(
   _: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> } // ✅ Fix: Ensure params is awaited
 ) {
+  const params = await context.params; // ✅ Await params before using
+
   try {
     const post = await prisma.post.findUnique({
       where: { slug: params.slug },
@@ -28,8 +30,10 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> } // ✅ Fix: Await params
 ) {
+  const params = await context.params; // ✅ Await params before using
+
   const session = await auth();
 
   if (!session || session.user?.email !== ALLOWED_EMAIL) {
@@ -65,8 +69,10 @@ export async function PUT(
 
 export async function DELETE(
   _: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> } // ✅ Fix: Await params
 ) {
+  const params = await context.params; // ✅ Await params before using
+
   const session = await auth();
 
   if (!session || session.user?.email !== ALLOWED_EMAIL) {

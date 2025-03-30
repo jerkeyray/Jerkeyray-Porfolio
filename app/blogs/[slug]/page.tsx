@@ -114,7 +114,16 @@ export default function BlogPage() {
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
                 remarkPlugins={[remarkGfm]}
                 components={{
-                  code({ node, inline, className, children, ...props }) {
+                  code({
+                    inline,
+                    className,
+                    children,
+                    ...props
+                  }: {
+                    inline?: boolean;
+                    className?: string;
+                    children?: React.ReactNode;
+                  }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
                       <pre className={`${className} relative`}>
@@ -131,7 +140,7 @@ export default function BlogPage() {
                       </code>
                     );
                   },
-                  blockquote({ node, children }) {
+                  blockquote({ children }) {
                     return (
                       <blockquote className="italic">{children}</blockquote>
                     );
