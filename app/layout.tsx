@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Aditya Srivastava",
     description: "Developer Portfolio",
     type: "website",
-    url: "https://yourwebsite.com", 
+    url: "https://jerkeyray.vercel.app", 
     images: [
       {
         url: "https://yourwebsite.com/og-image.png", 
@@ -17,7 +17,12 @@ export const metadata: Metadata = {
         alt: "Aditya Srivastava Portfolio",
       },
     ],
-  }
+  },
+  icons: {
+    icon: "/favicon.ico", 
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
