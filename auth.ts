@@ -16,11 +16,24 @@ export const authConfig: NextAuthConfig = {
     signIn: "/big-boss-man/signin",
   },
   callbacks: {
-    async signIn({ user, account, profile }: { user: User; account: Account | null; profile?: Profile }) {
+    async signIn({
+      user,
+      account,
+      profile,
+    }: {
+      user: User;
+      account: Account | null;
+      profile?: Profile;
+    }) {
       if (!ALLOWED_GITHUB_ID) {
-        throw new Error("ALLOWED_GITHUB_ID is not set in environment variables");
+        throw new Error(
+          "ALLOWED_GITHUB_ID is not set in environment variables"
+        );
       }
-      if (account?.provider === "github" && profile?.id?.toString() === ALLOWED_GITHUB_ID) {
+      if (
+        account?.provider === "github" &&
+        profile?.id?.toString() === ALLOWED_GITHUB_ID
+      ) {
         return true;
       }
       return false;
@@ -33,8 +46,8 @@ export const authConfig: NextAuthConfig = {
       return session;
     },
     async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
-      if (url.startsWith("/")) return `${baseUrl}/big-boss-man`;
-      return baseUrl;
+      // Always redirect to /big-boss-man after sign in
+      return `${baseUrl}/big-boss-man`;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,

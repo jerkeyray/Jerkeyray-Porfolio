@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { auth } from "@/auth";
+import { use } from "react";
 
 const prisma = new PrismaClient();
 const ALLOWED_GITHUB_ID = process.env.ALLOWED_GITHUB_ID;
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
+  const params = await context.params;
   try {
     const post = await prisma.post.findUnique({
       where: { slug: params.slug },
@@ -30,8 +32,9 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
+  const params = await context.params;
   const session = await auth();
   if (!session || session.user.id !== ALLOWED_GITHUB_ID) {
     return NextResponse.json(
@@ -57,8 +60,9 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
+  const params = await context.params;
   const session = await auth();
   if (!session || session.user.id !== ALLOWED_GITHUB_ID) {
     return NextResponse.json(
