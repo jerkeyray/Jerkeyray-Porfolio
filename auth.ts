@@ -1,52 +1,51 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import GitHub from "next-auth/providers/github";
-import { Session, User, Profile, Account } from "next-auth";
-
-// Use env variable for GitHub ID
-const ALLOWED_GITHUB_ID = process.env.ALLOWED_GITHUB_ID;
+import { User } from "next-auth";
 
 export const authConfig: NextAuthConfig = {
   providers: [
     GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
   pages: {
-    signIn: "/big-boss-man/signin",
+    signIn: "/signin",
   },
   callbacks: {
-    async signIn({
-      user,
-      account,
-      profile,
-    }: {
-      user: User;
-      account: Account | null;
-      profile?: Profile;
-    }) {
-      if (!ALLOWED_GITHUB_ID) {
-        throw new Error(
-          "ALLOWED_GITHUB_ID is not set in environment variables"
-        );
+    async signIn({ user }: { user: User }) {
+      const allowedEmail = process.env.ALLOWED_EMAIL;
+
+      console.log("Sign-in attempt:", {
+        userEmail: user.email,
+        allowedEmail,
+      });
+
+      if (!allowedEmail) {
+        console.error("ALLOWED_EMAIL is not set");
+        return false;
       }
-      if (
-        account?.provider === "github" &&
-        profile?.id?.toString() === ALLOWED_GITHUB_ID
-      ) {
-        return true;
-      }
-      return false;
+
+      const isAllowed = user.email === allowedEmail;
+      console.log("Email auth comparison:", {
+        userEmail: user.email,
+        allowedEmail,
+        isAllowed,
+      });
+
+      return isAllowed;
     },
-    async session({ session, token }: { session: Session; token: any }) {
-      if (token.sub) {
-        session.user.id = token.sub;
-        session.isAdmin = token.sub === ALLOWED_GITHUB_ID;
-      }
+
+    async session({ session }) {
+      if (!session.user) return session;
+
+      const allowedEmail = process.env.ALLOWED_EMAIL;
+      session.isAdmin = session.user.email === allowedEmail;
+
       return session;
     },
-    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
-      // Always redirect to /big-boss-man after sign in
+
+    async redirect({ baseUrl }: { baseUrl: string }) {
       return `${baseUrl}/big-boss-man`;
     },
   },

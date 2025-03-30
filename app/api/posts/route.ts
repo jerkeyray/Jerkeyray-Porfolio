@@ -1,18 +1,18 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
 import { auth } from "@/auth";
+import prisma from "@/lib/prisma"; // Singleton Prisma instance
 
-const prisma = new PrismaClient();
-const ALLOWED_GITHUB_ID = process.env.ALLOWED_GITHUB_ID;
+const ALLOWED_EMAIL = process.env.ALLOWED_EMAIL || "";
 
 export async function GET() {
   try {
     const posts = await prisma.post.findMany({
       orderBy: { createdAt: "desc" },
     });
+
     return NextResponse.json(posts);
   } catch (error) {
-    console.error("Error fetching posts:", error);
+    console.error("GET /posts error:", error);
     return NextResponse.json(
       { error: "Failed to fetch posts" },
       { status: 500 }
@@ -22,9 +22,11 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const session = await auth();
-  if (!session || session.user.id !== ALLOWED_GITHUB_ID) {
+  console.log("Session Data:", session);
+
+  if (!session || session.user?.email !== ALLOWED_EMAIL) {
     return NextResponse.json(
-      { error: "Forbidden: Only the admin can create blogs" },
+      { error: "Forbidden: Only the admin can create posts" },
       { status: 403 }
     );
   }
@@ -38,7 +40,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Generate slug from title
     const slug = title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
@@ -47,9 +48,10 @@ export async function POST(request: Request) {
     const newPost = await prisma.post.create({
       data: { title, content, slug },
     });
+
     return NextResponse.json(newPost, { status: 201 });
   } catch (error) {
-    console.error("Error creating post:", error);
+    console.error("POST /posts error:", error);
     return NextResponse.json(
       { error: "Failed to create post" },
       { status: 500 }
