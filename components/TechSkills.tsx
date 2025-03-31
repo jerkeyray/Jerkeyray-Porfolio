@@ -44,13 +44,13 @@ const skills = [
 
 export default function TechSkills() {
   return (
-    <section className="py-12 bg-white flex flex-col items-center px-4 md:px-8">
+    <section className="py-12 bg-white flex flex-col items-center">
       {/* Title */}
       <h2 className="text-2xl md:text-4xl font-bold text-black mb-6">
         Tech I have worked with
       </h2>
       {/* Moving Rows */}
-      <div className="flex flex-col gap-8 overflow-hidden w-full">
+      <div className="flex flex-col gap-8 overflow-hidden w-screen">
         {/* First Row */}
         <div className="flex gap-6 animate-[marquee_20s_linear_infinite]">
           {[...skills, ...skills].map((skill, index) => (

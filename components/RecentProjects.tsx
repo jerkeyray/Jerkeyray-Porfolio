@@ -46,7 +46,7 @@ export default function RecentProjects() {
         </h2>
       </div>
       {/* Carousel */}
-      <div className="relative w-full max-w-6xl px-4">
+      <div className="relative w-full max-w-6xl  md:px-12">
         <Carousel
           opts={{
             align: "center", // Center the active item
@@ -61,24 +61,24 @@ export default function RecentProjects() {
                 key={index}
                 className="basis-full flex justify-center items-center"
               >
-                <div className="w-[90%] md:w-[75%] lg:w-[65%] xl:w-[60%] h-auto">
+                <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[70%] h-auto">
                   {/* Maintain aspect ratio using aspect-video */}
                   <ProjectCard {...project} />
                 </div>
               </CarouselItem>
             ))}
             <CarouselItem className="basis-full flex justify-center items-center">
-              <div className="w-[90%] md:w-[75%] lg:w-[65%] xl:w-[60%] h-auto">
+              <div className="w-[90%] md:w-[80%] lg:w-[75%] xl:w-[70%] h-auto">
                 {/* Maintain aspect ratio using aspect-video */}
                 <ProjectsLinkCard />
               </div>
             </CarouselItem>
           </CarouselContent>
           {/* Hide buttons on mobile */}
-          <CarouselPrevious className="hidden md:flex absolute left-8 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
+          <CarouselPrevious className="hidden md:flex absolute -left-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-6 text-3xl hover:bg-[#0F0F0F] hover:text-[#0077FF] transition-all">
             ←
           </CarouselPrevious>
-          <CarouselNext className="hidden md:flex absolute right-8 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-4 text-2xl hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
+          <CarouselNext className="hidden md:flex absolute -right-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-6 text-3xl hover:bg-[#0F0F0F] hover:text-[#0077FF] transition-all">
             →
           </CarouselNext>
         </Carousel>

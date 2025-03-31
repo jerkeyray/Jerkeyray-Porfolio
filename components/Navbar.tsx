@@ -7,14 +7,14 @@ interface NavbarProps {
 
 const Navbar = ({ currentPage = "home" }: NavbarProps) => {
   return (
-    <nav className="w-full bg-transparent">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-end items-center h-12 pr-7">
-          <div className="flex space-x-6">
+    <nav className="w-full bg-transparent px-4 sm:px-0">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-end items-center h-16 sm:h-12">
+          <div className="flex space-x-4 sm:space-x-8">
             {currentPage !== "home" && (
               <Link
                 href="/"
-                className="text-black hover:text-blue-600 text-xl font-medium transition-colors"
+                className="text-black hover:text-blue-600 text-lg sm:text-2xl font-medium transition-colors"
               >
                 Home
               </Link>
@@ -22,7 +22,7 @@ const Navbar = ({ currentPage = "home" }: NavbarProps) => {
             {currentPage !== "projects" && (
               <Link
                 href="/projects"
-                className="text-black hover:text-blue-600 text-xl font-medium transition-colors"
+                className="text-black hover:text-blue-600 text-lg sm:text-2xl font-medium transition-colors"
               >
                 Projects
               </Link>
@@ -30,7 +30,7 @@ const Navbar = ({ currentPage = "home" }: NavbarProps) => {
             {currentPage !== "blogs" && (
               <Link
                 href="/blogs"
-                className="text-black hover:text-blue-600 text-xl font-medium transition-colors"
+                className="text-black hover:text-blue-600 text-lg sm:text-2xl font-medium transition-colors"
               >
                 Blogs
               </Link>
