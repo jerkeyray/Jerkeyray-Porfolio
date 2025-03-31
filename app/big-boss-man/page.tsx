@@ -44,12 +44,11 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-4 p-6">
-
+    <div className="min-h-screen bg-[#0F0F0F] text-white max-w-3xl mx-auto space-y-4 p-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
         <Link href="/big-boss-man/create">
-          <button className="bg-green-500 text-white px-4 py-2 rounded">
+          <button className="bg-[#1A1A1A] text-white px-6 py-3 rounded-md border-4 border-[#FFFFFF] shadow-[4px_4px_0_#FFFFFF] hover:bg-[#0077FF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
             + New Post
           </button>
         </Link>
@@ -59,10 +58,13 @@ export default function AdminPage() {
       ) : (
         <div className="space-y-4">
           {posts.map(({ id, title, slug, createdAt }) => (
-            <div key={id} className="border border-white/20 p-4 rounded">
+            <div
+              key={id}
+              className="bg-[#1A1A1A] border-4 border-[#FFFFFF] p-4 rounded-md shadow-[4px_4px_0_#FFFFFF]"
+            >
               <div className="flex justify-between items-center">
                 <div>
-                  <h2 className="font-bold">{title}</h2>
+                  <h2 className="font-bold text-white">{title}</h2>
                   <p className="text-sm text-gray-400">
                     {new Date(createdAt).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -73,7 +75,7 @@ export default function AdminPage() {
                 </div>
                 <div className="flex gap-3">
                   <Link href={`/big-boss-man/edit/${slug}`}>
-                    <button className="p-2 hover:text-blue-400">
+                    <button className="p-2 text-white hover:text-[#0077FF] transition-colors">
                       <FaEdit size={18} />
                     </button>
                   </Link>

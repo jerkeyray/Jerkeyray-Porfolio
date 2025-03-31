@@ -9,7 +9,7 @@ const Navbar = ({ currentPage = "home" }: NavbarProps) => {
   return (
     <nav className="w-full bg-transparent">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-end items-center h-12">
+        <div className="flex justify-end items-center h-12 pr-7">
           <div className="flex space-x-6">
             {currentPage !== "home" && (
               <Link

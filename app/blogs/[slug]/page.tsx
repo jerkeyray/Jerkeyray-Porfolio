@@ -61,55 +61,71 @@ export default function BlogPage() {
   }
 
   return (
-    <section className="min-h-screen py-12 flex flex-col items-center px-4 md:px-8 bg-gray-50">
-      <div className="w-full max-w-4xl">
+    <section className="relative min-h-screen py-6 md:py-12 flex flex-col items-center px-3 md:px-8 bg-[#0F0F0F]">
+      {/* Background pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
+          backgroundSize: "16px 16px",
+          opacity: 0.1,
+        }}
+      />
+
+      <div className="w-full max-w-4xl relative">
         {/* Back Button */}
         <Link href="/blogs">
-          <button className="mb-8 px-6 py-3 bg-[#FFFFFF] text-[#0F0F0F] text-lg font-bold rounded-md border-4 border-[#0F0F0F] shadow-[4px_4px_0_#0F0F0F] hover:bg-[#0077FF] hover:text-[#FFFFFF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
-            ←
+          <button className="mb-4 md:mb-8 px-4 md:px-6 py-2 md:py-3 bg-[#1A1A1A] text-[#FFFFFF] text-base md:text-lg font-bold rounded-md border-3 md:border-4 border-[#FFFFFF] shadow-[3px_3px_0_#FFFFFF] md:shadow-[4px_4px_0_#FFFFFF] hover:bg-[#0077FF] hover:shadow-[4px_4px_0_#0056B3] transition-all">
+            ← Back
           </button>
         </Link>
 
-        {/* Blog Content */}
-        <article className="relative bg-white border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden">
+        {/* Title and Date Container */}
+        <div className="relative bg-[#1A1A1A] border-3 md:border-4 border-[#FFFFFF] rounded-md shadow-[4px_4px_0_#FFFFFF] md:shadow-[8px_8px_0_#FFFFFF] overflow-hidden mb-4 md:mb-8">
           <div
             className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
-              backgroundImage: `radial-gradient(#0F0F0F 1px, transparent 1px)`,
+              backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
               backgroundSize: "8px 8px",
             }}
           />
-          <div className="relative p-8 md:p-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="relative p-4 md:p-12">
+            <h1 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-white">
               {post.title}
             </h1>
-            <div className="text-sm text-gray-500 mb-8">
+            <div className="text-sm text-gray-400">
               {new Date(post.createdAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
             </div>
+          </div>
+        </div>
+
+        {/* Blog Content Container */}
+        <article className="relative bg-white border-3 md:border-4 border-[#FFFFFF] rounded-md shadow-[4px_4px_0_#FFFFFF] md:shadow-[8px_8px_0_#FFFFFF] overflow-hidden">
+          <div className="relative p-4 md:p-12">
             <div
-              className="prose prose-lg max-w-none 
-              prose-headings:font-bold 
-              prose-h1:text-4xl prose-h1:mb-8 
-              prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-6 
-              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-              prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
+              className="prose prose-sm md:prose-lg max-w-none 
+              prose-headings:font-bold prose-headings:text-gray-900
+              prose-h1:text-2xl md:prose-h1:text-4xl prose-h1:mb-4 md:prose-h1:mb-8 
+              prose-h2:text-xl md:prose-h2:text-3xl prose-h2:mt-6 md:prose-h2:mt-10 prose-h2:mb-4 md:prose-h2:mb-6 
+              prose-h3:text-lg md:prose-h3:text-2xl prose-h3:mt-4 md:prose-h3:mt-8 prose-h3:mb-2 md:prose-h3:mb-4
+              prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 md:prose-p:mb-6
               prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
               prose-strong:text-gray-900 prose-strong:font-bold
-              prose-ul:list-disc prose-ul:pl-6 prose-ul:my-6
-              prose-ol:list-decimal prose-ol:pl-6 prose-ol:my-6
-              prose-li:text-gray-700 prose-li:mb-2
+              prose-ul:list-disc prose-ul:pl-4 md:prose-ul:pl-6 prose-ul:my-4 md:prose-ul:my-6
+              prose-ol:list-decimal prose-ol:pl-4 md:prose-ol:pl-6 prose-ol:my-4 md:prose-ol:my-6
+              prose-li:text-gray-700 prose-li:mb-1 md:prose-li:mb-2
               prose-blockquote:border-l-4 prose-blockquote:border-blue-500
-              prose-blockquote:pl-4 prose-blockquote:py-1 prose-blockquote:my-6
+              prose-blockquote:pl-3 md:prose-blockquote:pl-4 prose-blockquote:py-1 prose-blockquote:my-4 md:prose-blockquote:my-6
               prose-blockquote:bg-blue-50 prose-blockquote:rounded-r
-              prose-img:rounded-lg prose-img:shadow-md prose-img:my-8
-              prose-code:text-pink-600 prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded
-              prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-4 
-              prose-pre:rounded-lg prose-pre:shadow-lg prose-pre:my-6
-              prose-pre:overflow-x-auto"
+              prose-img:rounded-lg prose-img:shadow-md prose-img:my-4 md:prose-img:my-8
+              prose-code:text-pink-600 prose-code:bg-gray-100 prose-code:text-sm md:prose-code:text-base
+              prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-2 md:prose-pre:p-4 
+              prose-pre:rounded-lg prose-pre:shadow-lg prose-pre:my-4 md:prose-pre:my-6
+              prose-pre:text-sm md:prose-pre:text-base prose-pre:overflow-x-auto"
             >
               <ReactMarkdown
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
