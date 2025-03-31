@@ -13,7 +13,7 @@ const AboutMe = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center py-6 bg-[#FFFFFF] px-4 md:px-8">
+    <section className="min-h-screen flex flex-col md:flex-row items-center justify-center py-6 md:py-20 md:pb-56 bg-[#FFFFFF] px-4 md:px-8">
       {/* Profile Image */}
       <div className="w-40 h-40 md:w-48 md:h-48 bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-full shadow-[8px_8px_0_#0F0F0F] overflow-hidden flex-shrink-0">
         <Image
@@ -40,9 +40,9 @@ const AboutMe = () => {
         </h1>
         {/* Description */}
         <p className="relative text-lg md:text-xl max-w-lg text-center leading-relaxed whitespace-pre-line z-10">
-          A CS undergrad with a passion for creating engaging user experiences
-          and solving complex problems. I love combining creativity with
-          technology to bring ideas to life.
+          A CS undergrad who sees technology as a canvas. I fuse imagination
+          with precision to create stunning, innovative systems that push
+          boundaries.
         </p>
         {/* Speech Bubble */}
         <div className="relative mt-6 p-4 bg-[#F9F9F9] border-4 border-[#0F0F0F] rounded-md shadow-[6px_6px_0_#0F0F0F] text-center text-lg md:text-xl font-medium z-10">
