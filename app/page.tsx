@@ -9,7 +9,7 @@ import React from "react";
 const Home = () => {
   return (
     <main className="min-h-screen flex flex-col items-center scroll-smooth bg-[#FFFFFF]">
-      <Navbar />
+      <Navbar currentPage="home" />
       <div className="w-full">
         {/* About Me Section */}
         <section className="w-full px-4 md:px-8">
