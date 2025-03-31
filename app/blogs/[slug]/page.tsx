@@ -8,6 +8,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import "highlight.js/styles/github-dark.css";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 interface BlogPost {
   id: number;
@@ -46,7 +47,7 @@ export default function BlogPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-2xl font-bold">Loading...</div>
+        <LoadingSpinner />
       </div>
     );
   }

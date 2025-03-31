@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import BlogCard from "@/components/BlogCard";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 interface BlogPost {
   id: number;
@@ -34,7 +36,7 @@ export default function BlogsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-2xl font-bold">Loading...</div>
+        <LoadingSpinner />
       </div>
     );
   }
@@ -58,30 +60,10 @@ export default function BlogsPage() {
         </div>
 
         {/* Blog Posts */}
-        <div className="w-full max-w-4xl space-y-8">
+        <div className="w-full max-w-7xl space-y-6">
           {posts.length > 0 ? (
             posts.map((post) => (
-              <Link
-                key={post.id}
-                href={`/blogs/${post.slug}`}
-                className="block" // Add this to make the entire card clickable
-              >
-                <article className="bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-md shadow-[6px_6px_0_#0F0F0F] p-8 hover:shadow-[8px_8px_0_#0F0F0F] transition-all cursor-pointer">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {post.content}
-                  </p>
-                  <div className="text-sm text-gray-500">
-                    {new Date(post.createdAt).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </div>
-                </article>
-              </Link>
+              <BlogCard key={post.id} post={post} variant="default" />
             ))
           ) : (
             <div className="relative w-full bg-[#000000] text-[#FFFFFF] border-4 border-[#FFFFFF] border-t-[#0F0F0F] border-l-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden p-12">

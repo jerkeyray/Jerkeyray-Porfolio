@@ -1,20 +1,48 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import { useEffect, useState } from "react";
+import BlogCard from "./BlogCard";
+import LoadingSpinner from "./LoadingSpinner";
 
-interface Blog {
-  slug: string;
+interface BlogPost {
+  id: number;
   title: string;
-  excerpt: string;
-  date: string;
+  slug: string;
+  content: string;
+  createdAt: string;
 }
 
-const blogs: Blog[] = []; // Empty array to simulate no blogs available
-
 const RecentBlogs = () => {
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch("/api/posts");
+        const data = await res.json();
+        setBlogs(data.slice(0, 3)); // Get only 3 most recent posts
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-16 md:py-24 flex flex-col items-center px-4 md:px-8">
+        <LoadingSpinner />
+      </section>
+    );
+  }
+
   return (
-    <section className="py-12 flex flex-col items-center px-4 md:px-8">
+    <section className="py-16 md:py-24 flex flex-col items-center px-4 md:px-8 ">
       {/* Title */}
-      <div className="relative w-full max-w-xl mx-auto p-6 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden mb-8">
+      <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden mb-16">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{
@@ -28,21 +56,11 @@ const RecentBlogs = () => {
       </div>
 
       {/* Blog Cards */}
-      <div className="max-w-6xl w-full">
+      <div className="w-full max-w-7xl">
         {blogs.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogs.map((blog, index) => (
-              <Link key={index} href={blog.slug}>
-                <div className="bg-[#FFFFFF] border-2 border-[#0F0F0F] rounded-md shadow-[4px_4px_0_#0F0F0F] p-6 transition-all">
-                  <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
-                  <p className="text-sm text-gray-600 group-hover:text-white mb-4">
-                    {blog.excerpt}
-                  </p>
-                  <p className="text-xs text-gray-500 group-hover:text-white">
-                    {blog.date}
-                  </p>
-                </div>
-              </Link>
+          <div className="space-y-6">
+            {blogs.map((blog) => (
+              <BlogCard key={blog.id} post={blog} variant="enlargeable" />
             ))}
           </div>
         ) : (
