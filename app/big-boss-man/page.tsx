@@ -44,58 +44,60 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F] text-white max-w-3xl mx-auto space-y-4 p-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-        <Link href="/big-boss-man/create">
-          <button className="bg-[#1A1A1A] text-white px-6 py-3 rounded-md border-4 border-[#FFFFFF] shadow-[4px_4px_0_#FFFFFF] hover:bg-[#0077FF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
-            + New Post
-          </button>
-        </Link>
-      </div>
-      {posts.length === 0 ? (
-        <p>No posts found.</p>
-      ) : (
-        <div className="space-y-4">
-          {posts.map(({ id, title, slug, createdAt }) => (
-            <div
-              key={id}
-              className="bg-[#1A1A1A] border-4 border-[#FFFFFF] p-4 rounded-md shadow-[4px_4px_0_#FFFFFF]"
-            >
-              <div className="flex justify-between items-center">
-                <div>
-                  <h2 className="font-bold text-white">{title}</h2>
-                  <p className="text-sm text-gray-400">
-                    {new Date(createdAt).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                </div>
-                <div className="flex gap-3">
-                  <Link href={`/big-boss-man/edit/${slug}`}>
-                    <button className="p-2 text-white hover:text-[#0077FF] transition-colors">
-                      <FaEdit size={18} />
+    <div className="min-h-screen w-full bg-[#0F0F0F]">
+      <div className="max-w-3xl mx-auto space-y-4 p-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
+          <Link href="/big-boss-man/create">
+            <button className="bg-[#1A1A1A] text-white px-6 py-3 rounded-md border-4 border-[#FFFFFF] shadow-[4px_4px_0_#FFFFFF] hover:bg-[#0077FF] hover:shadow-[6px_6px_0_#0056B3] transition-all">
+              + New Post
+            </button>
+          </Link>
+        </div>
+        {posts.length === 0 ? (
+          <p>No posts found.</p>
+        ) : (
+          <div className="space-y-4">
+            {posts.map(({ id, title, slug, createdAt }) => (
+              <div
+                key={id}
+                className="bg-[#1A1A1A] border-4 border-[#FFFFFF] p-4 rounded-md shadow-[4px_4px_0_#FFFFFF]"
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h2 className="font-bold text-white">{title}</h2>
+                    <p className="text-sm text-gray-400">
+                      {new Date(createdAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </p>
+                  </div>
+                  <div className="flex gap-3">
+                    <Link href={`/big-boss-man/edit/${slug}`}>
+                      <button className="p-2 text-white hover:text-[#0077FF] transition-colors">
+                        <FaEdit size={18} />
+                      </button>
+                    </Link>
+                    <button
+                      className="p-2 text-red-400 hover:text-red-500 disabled:opacity-50"
+                      onClick={() => handleDelete(slug)}
+                      disabled={isPending && deletingSlug === slug}
+                    >
+                      {isPending && deletingSlug === slug ? (
+                        "..."
+                      ) : (
+                        <FaTrash size={18} />
+                      )}
                     </button>
-                  </Link>
-                  <button
-                    className="p-2 text-red-400 hover:text-red-500 disabled:opacity-50"
-                    onClick={() => handleDelete(slug)}
-                    disabled={isPending && deletingSlug === slug}
-                  >
-                    {isPending && deletingSlug === slug ? (
-                      "..."
-                    ) : (
-                      <FaTrash size={18} />
-                    )}
-                  </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

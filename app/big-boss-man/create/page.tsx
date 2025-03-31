@@ -32,27 +32,29 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold">Create New Post</h1>
-      <input
-        className="w-full p-2 border border-gray-700 rounded mt-4"
-        placeholder="Enter title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <textarea
-        className="w-full p-2 border border-gray-700 rounded mt-4 h-40"
-        placeholder="Enter content"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <button
-        className="bg-green-500 text-white px-4 py-2 rounded mt-4"
-        onClick={handleCreate}
-        disabled={saving}
-      >
-        {saving ? "Creating..." : "Create Post"}
-      </button>
+    <div className="min-h-screen w-full bg-gray-900">
+      <div className="max-w-2xl mx-auto p-6">
+        <h1 className="text-2xl font-bold">Create New Post</h1>
+        <input
+          className="w-full p-2 border border-gray-700 rounded mt-4"
+          placeholder="Enter title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea
+          className="w-full p-2 border border-gray-700 rounded mt-4 h-40"
+          placeholder="Enter content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <button
+          className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+          onClick={handleCreate}
+          disabled={saving}
+        >
+          {saving ? "Creating..." : "Create Post"}
+        </button>
+      </div>
     </div>
   );
 }
