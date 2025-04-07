@@ -33,20 +33,20 @@ const RecentBlogs = () => {
 
   if (loading) {
     return (
-      <section className="py-16 md:py-24 flex flex-col items-center px-4 md:px-8">
+      <section className="py-16 md:py-24 flex flex-col items-center px-4 md:px-8 bg-[#0F0F0F]">
         <LoadingSpinner />
       </section>
     );
   }
 
   return (
-    <section className="py-16 md:py-24 flex flex-col items-center px-4 md:px-8 ">
+    <section className="py-16 md:py-24 flex flex-col items-center px-4 md:px-8 bg-[#0F0F0F]">
       {/* Title */}
-      <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden mb-16">
+      <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden mb-16">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{
-            backgroundImage: `radial-gradient(#0F0F0F 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
             backgroundSize: "8px 8px",
           }}
         />
@@ -64,7 +64,7 @@ const RecentBlogs = () => {
             ))}
           </div>
         ) : (
-          <div className="relative w-full max-w-md mx-auto p-12 md:p-20 bg-[#000000] text-[#FFFFFF] border-4 border-[#FFFFFF] border-t-[#0F0F0F] border-l-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden">
+          <div className="relative w-full max-w-md mx-auto p-12 md:p-20 bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden">
             {/* Dotted Background */}
             <div
               className="absolute inset-0 opacity-10 pointer-events-none"

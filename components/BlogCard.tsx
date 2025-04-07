@@ -18,12 +18,12 @@ const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
     <Link href={`/blogs/${post.slug}`} className="block w-full">
       <article
         className={`
-        relative bg-[#0F0F0F] text-white border-4 border-[#FFFFFF] rounded-md 
-        px-8 py-6 md:px-12 md:py-8 shadow-[6px_6px_0_#FFFFFF] 
+        relative bg-[#1A1A1A] text-white border-4 border-[#333333] rounded-md 
+        px-8 py-6 md:px-12 md:py-8 shadow-[6px_6px_0_#333333] 
         ${
           variant === "enlargeable"
-            ? "hover:scale-[1.02] hover:shadow-[12px_12px_0_#FFFFFF]"
-            : "hover:shadow-[8px_8px_0_#FFFFFF]"
+            ? "hover:scale-[1.02] hover:shadow-[12px_12px_0_#333333]"
+            : "hover:shadow-[8px_8px_0_#333333]"
         }
         transition-all cursor-pointer w-full overflow-hidden
       `}

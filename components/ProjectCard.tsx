@@ -23,7 +23,7 @@ export default function ProjectCard({
   githubUrl,
 }: ProjectCardProps) {
   return (
-    <div className="relative flex-shrink-0 w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] bg-[#FFFFFF] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden snap-center mx-auto">
+    <div className="relative flex-shrink-0 w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] bg-[#1A1A1A] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden snap-center mx-auto">
       <div className="absolute inset-0 opacity-5">
         <DottedPattern />
       </div>
@@ -39,26 +39,26 @@ export default function ProjectCard({
       <div className="p-6 md:p-8 space-y-6">
         <div className="flex items-center justify-between">
           <Link href={liveUrl || "#"} target="_blank">
-            <h3 className="text-2xl md:text-3xl font-bold text-black hover:text-blue-600 transition-colors">
+            <h3 className="text-2xl md:text-3xl font-bold text-white hover:text-blue-400 transition-colors">
               {title}
             </h3>
           </Link>
           {githubUrl && (
             <Link href={githubUrl} target="_blank">
-              <FaGithub className="text-black hover:text-blue-600 text-2xl md:text-3xl transition-colors" />
+              <FaGithub className="text-white hover:text-blue-400 text-2xl md:text-3xl transition-colors" />
             </Link>
           )}
         </div>
-        <p className="text-gray-600 text-base md:text-lg">{description}</p>
+        <p className="text-gray-300 text-base md:text-lg">{description}</p>
         <div className="flex flex-wrap gap-3 md:gap-4 pt-2">
           {tech.map((techItem, i) => {
             const Icon = techIcons[techItem] || null;
             return (
               <div key={i} className="flex items-center gap-2">
                 {Icon ? (
-                  <Icon className="text-black text-xl md:text-2xl" />
+                  <Icon className="text-gray-200 text-xl md:text-2xl" />
                 ) : (
-                  <span className="text-base md:text-lg text-gray-800 font-semibold">
+                  <span className="text-base md:text-lg text-gray-300 font-semibold">
                     {techItem}
                   </span>
                 )}

@@ -44,9 +44,9 @@ const skills = [
 
 export default function TechSkills() {
   return (
-    <section className="py-12 bg-white flex flex-col items-center">
+    <section className="py-12 bg-[#0F0F0F] flex flex-col items-center">
       {/* Title */}
-      <h2 className="text-2xl md:text-4xl font-bold text-black mb-6">
+      <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
         Tech I have worked with
       </h2>
       {/* Moving Rows */}
@@ -56,10 +56,10 @@ export default function TechSkills() {
           {[...skills, ...skills].map((skill, index) => (
             <div
               key={`row1-${index}`}
-              className="flex items-center p-2 md:p-4 bg-white border-2 border-black rounded-md shadow-[6px_6px_0_#0F0F0F] w-28 md:w-48"
+              className="flex items-center p-2 md:p-4 bg-[#1A1A1A] border-2 border-[#333333] rounded-md shadow-[6px_6px_0_#333333] w-28 md:w-48"
             >
-              <skill.icon className="w-5 h-5 md:w-8 md:h-8 mr-2 md:mr-4" />
-              <span className="text-[10px] md:text-sm font-medium">
+              <skill.icon className="w-5 h-5 md:w-8 md:h-8 mr-2 md:mr-4 text-white" />
+              <span className="text-[10px] md:text-sm font-medium text-white">
                 {skill.name}
               </span>
             </div>
@@ -70,10 +70,10 @@ export default function TechSkills() {
           {[...skills, ...skills].map((skill, index) => (
             <div
               key={`row2-${index}`}
-              className="flex items-center p-2 md:p-4 bg-white border-2 border-black rounded-md shadow-[-6px_-6px_0_#0F0F0F] w-28 md:w-48"
+              className="flex items-center p-2 md:p-4 bg-[#1A1A1A] border-2 border-[#333333] rounded-md shadow-[-6px_-6px_0_#333333] w-28 md:w-48"
             >
-              <skill.icon className="w-5 h-5 md:w-8 md:h-8 mr-2 md:mr-4" />
-              <span className="text-[10px] md:text-sm font-medium">
+              <skill.icon className="w-5 h-5 md:w-8 md:h-8 mr-2 md:mr-4 text-white" />
+              <span className="text-[10px] md:text-sm font-medium text-white">
                 {skill.name}
               </span>
             </div>

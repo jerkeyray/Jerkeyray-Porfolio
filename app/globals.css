@@ -2,16 +2,34 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-body {
-  margin: 0;
-  font-family: "'Noto Sans', 'Noto Sans JP', sans-serif";
-  background-color: #ffffff; /* Ensure consistent white background */
-  min-height: 100vh;
-  color: #000;
 
-  /* Remove the manga paper texture */
-  background-image: none;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* or your dark color */
+  color: #fff;
+  height: 100%;
+  overscroll-behavior: none; /* prevents scroll chaining glow */
+  font-family: "'Noto Sans', 'Noto Sans JP', sans-serif";
+  min-height: 100vh;
 }
+
+/* Tiny scroll effect */
+body::after {
+  content: "";
+  display: block;
+  height: 2px; /* Just enough to enable subtle scroll */
+}
+
+/* Hide scrollbar but keep scroll functionality */
+body {
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+
 
 @theme inline {
   --color-background: var(--background);

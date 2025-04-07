@@ -31,13 +31,13 @@ export default function RecentProjects() {
   }, [api]);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center py-12 bg-[#FFFFFF] px-4 md:px-8">
+    <section className="min-h-screen flex flex-col items-center justify-center py-12 bg-[#0F0F0F] px-4 md:px-8">
       {/* Title */}
-      <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden mb-8">
+      <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden mb-8">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{
-            backgroundImage: `radial-gradient(#0F0F0F 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
             backgroundSize: "8px 8px",
           }}
         />
@@ -75,10 +75,10 @@ export default function RecentProjects() {
             </CarouselItem>
           </CarouselContent>
           {/* Hide buttons on mobile */}
-          <CarouselPrevious className="hidden md:flex absolute -left-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-6 text-3xl hover:bg-[#0F0F0F] hover:text-[#0077FF] transition-all">
+          <CarouselPrevious className="hidden md:flex absolute -left-4 top-1/2 transform -translate-y-1/2 bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-full shadow-[6px_6px_0_#333333] p-6 text-3xl hover:bg-[#232323] hover:text-[#0077FF] transition-all">
             ←
           </CarouselPrevious>
-          <CarouselNext className="hidden md:flex absolute -right-4 top-1/2 transform -translate-y-1/2 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-full shadow-[6px_6px_0_#0F0F0F] p-6 text-3xl hover:bg-[#0F0F0F] hover:text-[#0077FF] transition-all">
+          <CarouselNext className="hidden md:flex absolute -right-4 top-1/2 transform -translate-y-1/2 bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-full shadow-[6px_6px_0_#333333] p-6 text-3xl hover:bg-[#232323] hover:text-[#0077FF] transition-all">
             →
           </CarouselNext>
         </Carousel>
@@ -90,8 +90,8 @@ export default function RecentProjects() {
             key={index}
             className={`w-4 h-4 border-2 rounded-full ${
               currentIndex === index
-                ? "bg-[#0F0F0F] border-[#0F0F0F]"
-                : "border-dashed border-[#0F0F0F]"
+                ? "bg-[#FFFFFF] border-[#FFFFFF]"
+                : "border-dashed border-[#FFFFFF]"
             }`}
           ></div>
         ))}

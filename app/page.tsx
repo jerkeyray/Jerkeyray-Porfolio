@@ -8,7 +8,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <main className="min-h-screen flex flex-col items-center scroll-smooth bg-[#FFFFFF]">
+    <main className="min-h-screen flex flex-col items-center scroll-smooth bg-[#0F0F0F]">
       <Navbar currentPage="home" />
       <div className="w-full">
         {/* About Me Section */}

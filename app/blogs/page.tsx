@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import BlogCard from "@/components/BlogCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
@@ -35,22 +34,22 @@ export default function BlogsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[#0F0F0F]">
         <LoadingSpinner />
       </div>
     );
   }
 
   return (
-    <>
+    <div className="bg-[#0F0F0F]">
       <Navbar currentPage="blogs" />
       <section className="min-h-screen py-12 flex flex-col items-center px-4 md:px-8">
         {/* Title Card */}
-        <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#FFFFFF] text-[#0F0F0F] border-4 border-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden mb-12">
+        <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden mb-12">
           <div
             className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
-              backgroundImage: `radial-gradient(#0F0F0F 1px, transparent 1px)`,
+              backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
               backgroundSize: "8px 8px",
             }}
           />
@@ -66,7 +65,7 @@ export default function BlogsPage() {
               <BlogCard key={post.id} post={post} variant="default" />
             ))
           ) : (
-            <div className="relative w-full bg-[#000000] text-[#FFFFFF] border-4 border-[#FFFFFF] border-t-[#0F0F0F] border-l-[#0F0F0F] rounded-md shadow-[8px_8px_0_#0F0F0F] overflow-hidden p-12">
+            <div className="relative w-full bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden p-12">
               <div
                 className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{
@@ -86,6 +85,6 @@ export default function BlogsPage() {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }

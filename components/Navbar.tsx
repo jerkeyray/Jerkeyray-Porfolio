@@ -14,7 +14,7 @@ const Navbar = ({ currentPage = "home" }: NavbarProps) => {
             {currentPage !== "home" && (
               <Link
                 href="/"
-                className="text-black hover:text-blue-600 text-lg sm:text-2xl font-medium transition-colors"
+                className="text-white hover:text-blue-400 text-lg sm:text-2xl font-medium transition-colors"
               >
                 Home
               </Link>
@@ -22,7 +22,7 @@ const Navbar = ({ currentPage = "home" }: NavbarProps) => {
             {currentPage !== "projects" && (
               <Link
                 href="/projects"
-                className="text-black hover:text-blue-600 text-lg sm:text-2xl font-medium transition-colors"
+                className="text-white hover:text-blue-400 text-lg sm:text-2xl font-medium transition-colors"
               >
                 Projects
               </Link>
@@ -30,7 +30,7 @@ const Navbar = ({ currentPage = "home" }: NavbarProps) => {
             {currentPage !== "blogs" && (
               <Link
                 href="/blogs"
-                className="text-black hover:text-blue-600 text-lg sm:text-2xl font-medium transition-colors"
+                className="text-white hover:text-blue-400 text-lg sm:text-2xl font-medium transition-colors"
               >
                 Blogs
               </Link>
