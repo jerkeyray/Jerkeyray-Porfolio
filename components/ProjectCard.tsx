@@ -22,9 +22,13 @@ export default function ProjectCard({
   liveUrl,
   githubUrl,
 }: ProjectCardProps) {
+  // Check if URLs are valid (not undefined or empty)
+  const hasLiveUrl = liveUrl && liveUrl.trim() !== "";
+  const hasGithubUrl = githubUrl && githubUrl.trim() !== "";
+
   return (
     <div className="relative flex-shrink-0 w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] bg-[#1A1A1A] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden snap-center mx-auto">
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <DottedPattern />
       </div>
       <div className="relative w-full aspect-[16/9]">
@@ -38,13 +42,27 @@ export default function ProjectCard({
       </div>
       <div className="p-6 md:p-8 space-y-6">
         <div className="flex items-center justify-between">
-          <Link href={liveUrl || "#"} target="_blank">
-            <h3 className="text-2xl md:text-3xl font-bold text-white hover:text-blue-400 transition-colors">
+          {hasLiveUrl ? (
+            <Link
+              href={liveUrl}
+              target="_blank"
+              className="transition-transform hover:scale-105  pointer-events-auto"
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-white hover:text-blue-400 transition-colors">
+                {title}
+              </h3>
+            </Link>
+          ) : (
+            <h3 className="text-2xl md:text-3xl font-bold text-white">
               {title}
             </h3>
-          </Link>
-          {githubUrl && (
-            <Link href={githubUrl} target="_blank">
+          )}
+          {hasGithubUrl && (
+            <Link
+              href={githubUrl}
+              target="_blank"
+              className="inline-block p-2 transition-all hover:scale-110  pointer-events-auto"
+            >
               <FaGithub className="text-white hover:text-blue-400 text-2xl md:text-3xl transition-colors" />
             </Link>
           )}

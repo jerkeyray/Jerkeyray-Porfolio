@@ -114,19 +114,21 @@ export default function BlogPage() {
               prose-h2:text-xl md:prose-h2:text-3xl prose-h2:mt-6 md:prose-h2:mt-10 prose-h2:mb-4 md:prose-h2:mb-6 
               prose-h3:text-lg md:prose-h3:text-2xl prose-h3:mt-4 md:prose-h3:mt-8 prose-h3:mb-2 md:prose-h3:mb-4
               prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4 md:prose-p:mb-6
-              prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+              prose-p:break-words prose-p:hyphens-auto
+              prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-a:break-words
               prose-strong:text-gray-200 prose-strong:font-bold
               prose-ul:list-disc prose-ul:pl-4 md:prose-ul:pl-6 prose-ul:my-4 md:prose-ul:my-6
               prose-ol:list-decimal prose-ol:pl-4 md:prose-ol:pl-6 prose-ol:my-4 md:prose-ol:my-6
-              prose-li:text-gray-300 prose-li:mb-1 md:prose-li:mb-2
+              prose-li:text-gray-300 prose-li:mb-1 md:prose-li:mb-2 prose-li:break-words
               prose-blockquote:border-l-4 prose-blockquote:border-blue-500
               prose-blockquote:pl-3 md:prose-blockquote:pl-4 prose-blockquote:py-1 prose-blockquote:my-4 md:prose-blockquote:my-6
               prose-blockquote:bg-[#232323] prose-blockquote:rounded-r
-              prose-img:rounded-lg prose-img:shadow-md prose-img:my-4 md:prose-img:my-8
-              prose-code:text-pink-400 prose-code:bg-[#232323] prose-code:text-sm md:prose-code:text-base
+              prose-img:rounded-lg prose-img:shadow-md prose-img:my-4 md:prose-img:my-8 prose-img:max-w-full prose-img:h-auto
+              prose-code:text-pink-400 prose-code:bg-[#232323] prose-code:text-sm md:prose-code:text-base prose-code:break-words prose-code:whitespace-pre-wrap
               prose-pre:bg-[#121212] prose-pre:text-gray-300 prose-pre:p-2 md:prose-pre:p-4 
               prose-pre:rounded-lg prose-pre:shadow-lg prose-pre:my-4 md:prose-pre:my-6
-              prose-pre:text-sm md:prose-pre:text-base prose-pre:overflow-x-auto"
+              prose-pre:text-sm md:prose-pre:text-base prose-pre:overflow-x-auto
+              [&>*]:max-w-full"
             >
               <ReactMarkdown
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
@@ -144,7 +146,7 @@ export default function BlogPage() {
                   }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
-                      <pre className={`${className} relative`}>
+                      <pre className={`${className} relative overflow-x-auto`}>
                         <div className="absolute top-0 right-0 px-2 py-1 text-xs text-gray-400 bg-gray-900 rounded-bl">
                           {match[1]}
                         </div>
@@ -161,6 +163,19 @@ export default function BlogPage() {
                   blockquote({ children }) {
                     return (
                       <blockquote className="italic">{children}</blockquote>
+                    );
+                  },
+                  img({ src, alt }) {
+                    return (
+                      <img src={src} alt={alt} className="max-w-full h-auto" />
+                    );
+                  },
+                  // Ensure tables are responsive
+                  table({ children }) {
+                    return (
+                      <div className="overflow-x-auto">
+                        <table>{children}</table>
+                      </div>
                     );
                   },
                 }}

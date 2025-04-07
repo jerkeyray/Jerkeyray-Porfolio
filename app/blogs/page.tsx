@@ -65,7 +65,7 @@ export default function BlogsPage() {
               <BlogCard key={post.id} post={post} variant="default" />
             ))
           ) : (
-            <div className="relative w-full bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden p-12">
+            <div className="relative w-full bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden p-4 md:p-12">
               <div
                 className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{
@@ -74,10 +74,10 @@ export default function BlogsPage() {
                 }}
               />
               <div className="relative text-center">
-                <h3 className="text-4xl md:text-6xl font-bold mb-4">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 break-words">
                   No Blogs Available
                 </h3>
-                <p className="text-xl text-gray-300">
+                <p className="text-base sm:text-lg md:text-xl text-gray-300">
                   Check back later for updates!
                 </p>
               </div>

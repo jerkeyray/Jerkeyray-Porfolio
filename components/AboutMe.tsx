@@ -59,7 +59,7 @@ const AboutMe = () => {
             <FaGithub />
           </a>
           <a
-            href="https://x.com/jerkeyrey"
+            href="https://x.com/jerkeyray"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#FFFFFF] hover:text-[#0077FF] text-3xl"

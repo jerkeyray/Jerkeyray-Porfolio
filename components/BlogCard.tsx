@@ -19,7 +19,7 @@ const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
       <article
         className={`
         relative bg-[#1A1A1A] text-white border-4 border-[#333333] rounded-md 
-        px-8 py-6 md:px-12 md:py-8 shadow-[6px_6px_0_#333333] 
+        px-4 py-4 md:px-12 md:py-8 shadow-[6px_6px_0_#333333] 
         ${
           variant === "enlargeable"
             ? "hover:scale-[1.02] hover:shadow-[12px_12px_0_#333333]"
@@ -35,11 +35,11 @@ const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
             backgroundSize: "8px 8px",
           }}
         />
-        <div className="relative flex justify-between items-center gap-8 z-10">
-          <h2 className="font-bold truncate text-xl md:text-2xl lg:text-3xl">
+        <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-8 z-10">
+          <h2 className="font-bold break-words text-xl md:text-2xl lg:text-3xl max-w-full">
             {post.title}
           </h2>
-          <div className="text-gray-300 whitespace-nowrap text-sm md:text-base shrink-0">
+          <div className="text-gray-300 whitespace-nowrap text-sm md:text-base shrink-0 pt-1 sm:pt-0">
             {new Date(post.createdAt).toLocaleDateString("en-US", {
               year: "numeric",
               month: "short",
