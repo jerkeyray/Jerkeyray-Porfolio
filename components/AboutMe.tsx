@@ -36,7 +36,7 @@ const AboutMe = () => {
         />
         {/* Title */}
         <h1 className="relative text-4xl md:text-5xl font-bold mb-6 animate-fade-in text-center z-10">
-          Hi, I'm Aditya Srivastava
+          Hi, I&apos;m Aditya Srivastava
         </h1>
         {/* Description */}
         <p className="relative text-lg md:text-xl max-w-lg text-center leading-relaxed whitespace-pre-line z-10 text-gray-300">
