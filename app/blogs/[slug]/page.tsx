@@ -46,7 +46,7 @@ export default function BlogPage() {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-[#0F0F0F]">
+      <div className="min-h-screen flex items-center justify-center bg-black">
         <LoadingSpinner />
       </div>
     );
@@ -54,138 +54,76 @@ export default function BlogPage() {
 
   if (!post) {
     return (
-      <div className="h-screen flex items-center justify-center bg-[#0F0F0F]">
+      <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-2xl font-bold text-white">Blog post not found</div>
       </div>
     );
   }
 
   return (
-    <section className="relative py-6 md:py-12 flex flex-col items-center px-3 md:px-8 bg-[#0F0F0F]">
-      {/* Background pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage: `radial-gradient(#333333 1px, transparent 1px)`,
-          backgroundSize: "16px 16px",
-          opacity: 0.1,
-        }}
-      />
-
-      <div className="w-full max-w-4xl relative z-10 min-h-screen flex flex-col">
-        {/* Back Button */}
+    <section className="min-h-screen flex flex-col bg-black py-8 md:py-12 px-4 md:px-16">
+      {/* Back Button */}
+      <div className="w-full max-w-4xl mx-auto mb-8 flex justify-start">
+        {" "}
+        {/* Adjusted alignment */}
         <Link href="/blogs">
-          <button className="mb-4 md:mb-8 px-4 md:px-6 py-2 md:py-3 bg-[#1A1A1A] text-[#FFFFFF] text-base md:text-lg font-bold rounded-md border-3 md:border-4 border-[#333333] shadow-[3px_3px_0_#333333] md:shadow-[4px_4px_0_#333333] hover:bg-[#0077FF] hover:shadow-[4px_4px_0_#0056B3] transition-all">
-            ← Back
+          <button className="px-4 py-2 bg-black text-white font-medium rounded-md border-2 border-[#333333] shadow-[3px_3px_0_#333333] hover:shadow-[4px_4px_0_#0077FF] hover:border-[#0077FF] transition-all duration-200">
+            ← Back to blogs
           </button>
         </Link>
-
-        {/* Title and Date Container */}
-        <div className="relative bg-[#1A1A1A] border-3 md:border-4 border-[#333333] rounded-md shadow-[4px_4px_0_#333333] md:shadow-[8px_8px_0_#333333] overflow-hidden mb-4 md:mb-8">
-          <div
-            className="absolute inset-0 opacity-10 pointer-events-none"
-            style={{
-              backgroundImage: `radial-gradient(#666666 1px, transparent 1px)`,
-              backgroundSize: "8px 8px",
-            }}
-          />
-          <div className="relative p-4 md:p-12">
-            <h1 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-white">
-              {post.title}
-            </h1>
-            <div className="text-sm text-gray-400">
-              {new Date(post.createdAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Blog Content Container */}
-        <article className="relative bg-[#1A1A1A] border-3 md:border-4 border-[#333333] rounded-md shadow-[4px_4px_0_#333333] md:shadow-[8px_8px_0_#333333] overflow-hidden flex-1">
-          <div className="relative p-4 md:p-12 overflow-y-auto">
-            <div
-              className="prose prose-sm md:prose-lg max-w-none 
-              prose-invert
-              prose-headings:font-bold prose-headings:text-gray-100
-              prose-h1:text-2xl md:prose-h1:text-4xl prose-h1:mb-4 md:prose-h1:mb-8 
-              prose-h2:text-xl md:prose-h2:text-3xl prose-h2:mt-6 md:prose-h2:mt-10 prose-h2:mb-4 md:prose-h2:mb-6 
-              prose-h3:text-lg md:prose-h3:text-2xl prose-h3:mt-4 md:prose-h3:mt-8 prose-h3:mb-2 md:prose-h3:mb-4
-              prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4 md:prose-p:mb-6
-              prose-p:break-words prose-p:hyphens-auto
-              prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-a:break-words
-              prose-strong:text-gray-200 prose-strong:font-bold
-              prose-ul:list-disc prose-ul:pl-4 md:prose-ul:pl-6 prose-ul:my-4 md:prose-ul:my-6
-              prose-ol:list-decimal prose-ol:pl-4 md:prose-ol:pl-6 prose-ol:my-4 md:prose-ol:my-6
-              prose-li:text-gray-300 prose-li:mb-1 md:prose-li:mb-2 prose-li:break-words
-              prose-blockquote:border-l-4 prose-blockquote:border-blue-500
-              prose-blockquote:pl-3 md:prose-blockquote:pl-4 prose-blockquote:py-1 prose-blockquote:my-4 md:prose-blockquote:my-6
-              prose-blockquote:bg-[#232323] prose-blockquote:rounded-r
-              prose-img:rounded-lg prose-img:shadow-md prose-img:my-4 md:prose-img:my-8 prose-img:max-w-full prose-img:h-auto
-              prose-code:text-pink-400 prose-code:bg-[#232323] prose-code:text-sm md:prose-code:text-base prose-code:break-words prose-code:whitespace-pre-wrap
-              prose-pre:bg-[#121212] prose-pre:text-gray-300 prose-pre:p-2 md:prose-pre:p-4 
-              prose-pre:rounded-lg prose-pre:shadow-lg prose-pre:my-4 md:prose-pre:my-6
-              prose-pre:text-sm md:prose-pre:text-base prose-pre:overflow-x-auto
-              [&>*]:max-w-full"
-            >
-              <ReactMarkdown
-                rehypePlugins={[rehypeHighlight, rehypeRaw]}
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  code({
-                    inline,
-                    className,
-                    children,
-                    ...props
-                  }: {
-                    inline?: boolean;
-                    className?: string;
-                    children?: React.ReactNode;
-                  }) {
-                    const match = /language-(\w+)/.exec(className || "");
-                    return !inline && match ? (
-                      <pre className={`${className} relative overflow-x-auto`}>
-                        <div className="absolute top-0 right-0 px-2 py-1 text-xs text-gray-400 bg-gray-900 rounded-bl">
-                          {match[1]}
-                        </div>
-                        <code className={className} {...props}>
-                          {children}
-                        </code>
-                      </pre>
-                    ) : (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    );
-                  },
-                  blockquote({ children }) {
-                    return (
-                      <blockquote className="italic">{children}</blockquote>
-                    );
-                  },
-                  img({ src, alt }) {
-                    return (
-                      <img src={src} alt={alt} className="max-w-full h-auto" />
-                    );
-                  },
-                  // Ensure tables are responsive
-                  table({ children }) {
-                    return (
-                      <div className="overflow-x-auto">
-                        <table>{children}</table>
-                      </div>
-                    );
-                  },
-                }}
-              >
-                {post.content}
-              </ReactMarkdown>
-            </div>
-          </div>
-        </article>
       </div>
+
+      {/* Header */}
+      <header className="w-full max-w-4xl mx-auto mb-8 flex flex-col items-start">
+        {" "}
+        {/* Centered and aligned */}
+        <div className="flex items-center gap-3 mb-2">
+          <span className="block w-2 h-10 bg-[#0077FF] rounded-sm" />
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
+            {post.title}
+          </h1>
+        </div>
+        <div className="text-base text-gray-400 pl-3">
+          {new Date(post.createdAt).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </div>
+      </header>
+
+      {/* Blog Content */}
+      <article className="w-full max-w-4xl mx-auto px-4">
+        {" "}
+        {/* Centered and adjusted margins */}
+        <div className="prose prose-lg max-w-none prose-invert prose-headings:font-bold prose-headings:text-gray-100 prose-h1:text-3xl md:prose-h1:text-4xl prose-h2:text-2xl md:prose-h2:text-3xl prose-h3:text-xl md:prose-h3:text-2xl prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-a:text-[#0077FF] prose-a:underline hover:prose-a:text-[#3399ff] prose-strong:text-gray-200 prose-strong:font-bold prose-blockquote:border-l-4 prose-blockquote:border-[#0077FF] prose-blockquote:pl-4 prose-blockquote:py-1 prose-blockquote:my-4 prose-blockquote:bg-[#181828] prose-blockquote:rounded-r prose-img:rounded-lg prose-img:my-6 prose-img:max-w-full prose-img:h-auto prose-code:text-pink-400 prose-code:bg-[#232323] prose-code:text-base prose-pre:bg-[#181828] prose-pre:text-gray-300 prose-pre:p-4 prose-pre:rounded-lg prose-pre:shadow-lg prose-pre:my-6 [&>*]:max-w-full">
+          <ReactMarkdown
+            rehypePlugins={[rehypeHighlight, rehypeRaw]}
+            remarkPlugins={[remarkGfm]}
+            components={{
+              code({ inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || "");
+                return !inline && match ? (
+                  <pre className={`${className} relative overflow-x-auto`}>
+                    <div className="absolute top-0 right-0 px-2 py-1 text-xs text-gray-400 bg-[#1c1c1c] rounded-bl">
+                      {match[1]}
+                    </div>
+                    <code className={className} {...props}>
+                      {children}
+                    </code>
+                  </pre>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
+        </div>
+      </article>
     </section>
   );
 }

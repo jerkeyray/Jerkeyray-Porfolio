@@ -1,8 +1,7 @@
 // components/ProjectCard.tsx
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { techIcons } from "@/lib/techIcons";
-import DottedPattern from "./DottedPattern";
 
 interface ProjectCardProps {
   title: string;
@@ -25,50 +24,71 @@ export default function ProjectCard({
   const hasGithubUrl = githubUrl && githubUrl.trim() !== "";
 
   return (
-    <div className="relative flex-shrink-0 w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] bg-[#1A1A1A] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden snap-center mx-auto">
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <DottedPattern />
-      </div>
-      <div className="p-6 md:p-8 space-y-6">
+    <div className="relative w-full bg-black border-2 border-[#333333] rounded-lg shadow-[3px_3px_0_#333333] sm:shadow-[4px_4px_0_#333333] overflow-hidden transition-all duration-300 hover:shadow-[5px_5px_0_#333333] sm:hover:shadow-[6px_6px_0_#333333]">
+      {/* Dotted Pattern */}
+      <div
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
+          backgroundSize: "8px 8px",
+        }}
+      />
+
+      {/* Project content */}
+      <div className="relative z-10 p-4 sm:p-5 space-y-3 sm:space-y-4">
+        {/* Title and Links */}
         <div className="flex items-center justify-between">
-          {hasLiveUrl ? (
-            <Link
-              href={liveUrl}
-              target="_blank"
-              className="transition-transform hover:scale-105 pointer-events-auto"
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-white hover:text-blue-400 transition-colors">
-                {title}
-              </h3>
-            </Link>
-          ) : (
-            <h3 className="text-2xl md:text-3xl font-bold text-white">
-              {title}
-            </h3>
-          )}
-          {hasGithubUrl && (
-            <Link
-              href={githubUrl}
-              target="_blank"
-              className="inline-block p-2 transition-all hover:scale-110 pointer-events-auto"
-            >
-              <FaGithub className="text-white hover:text-blue-400 text-2xl md:text-3xl transition-colors" />
-            </Link>
-          )}
+          <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+            {title}
+          </h3>
+          <div className="flex space-x-3">
+            {hasGithubUrl && (
+              <Link
+                href={githubUrl}
+                target="_blank"
+                className="text-gray-400 hover:text-[#0077FF] text-base sm:text-lg transition-all duration-300 transform hover:scale-110"
+                aria-label={`GitHub repository for ${title}`}
+              >
+                <FaGithub />
+              </Link>
+            )}
+            {hasLiveUrl && (
+              <Link
+                href={liveUrl}
+                target="_blank"
+                className="text-gray-400 hover:text-[#0077FF] text-base sm:text-lg transition-all duration-300 transform hover:scale-110"
+                aria-label={`Live demo for ${title}`}
+              >
+                <FaExternalLinkAlt />
+              </Link>
+            )}
+          </div>
         </div>
-        <p className="text-gray-300 text-base md:text-lg">{description}</p>
-        <div className="flex flex-wrap gap-3 md:gap-4 pt-2">
+
+        {/* Description */}
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed transition-colors duration-200 hover:text-white">
+          {description}
+        </p>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 pt-2">
           {tech.map((techItem, i) => {
             const Icon = techIcons[techItem] || null;
             return (
-              <div key={i} className="flex items-center gap-2">
+              <div
+                key={i}
+                className="flex items-center bg-[#1F1F1F] px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg hover:bg-[#2A2A2A] transition-colors duration-300"
+              >
                 {Icon ? (
-                  <Icon className="text-gray-200 text-xl md:text-2xl" />
+                  <Icon className={`text-[#0077FF] text-sm sm:mr-1.5`} />
                 ) : (
-                  <span className="text-base md:text-lg text-gray-300 font-semibold">
+                  <span className="text-gray-200 text-xs sm:hidden">
                     {techItem}
                   </span>
                 )}
+                <span className="text-gray-200 text-sm hidden sm:inline">
+                  {techItem}
+                </span>
               </div>
             );
           })}

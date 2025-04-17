@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import BlogCard from "@/components/BlogCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import { FaPen } from "react-icons/fa";
 
 interface BlogPost {
   id: number;
@@ -34,57 +35,50 @@ export default function BlogsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0F0F0F]">
+      <div className="min-h-screen flex items-center justify-center bg-black">
         <LoadingSpinner />
       </div>
     );
   }
 
   return (
-    <div className="bg-[#0F0F0F]">
-      <Navbar currentPage="blogs" />
-      <section className="min-h-screen py-12 flex flex-col items-center px-4 md:px-8">
-        {/* Title Card */}
-        <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden mb-12">
-          <div
-            className="absolute inset-0 opacity-10 pointer-events-none"
-            style={{
-              backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
-              backgroundSize: "8px 8px",
-            }}
-          />
-          <h1 className="relative text-4xl md:text-5xl font-bold text-center z-10">
-            The JerkeyScript
-          </h1>
-        </div>
+    <section className="min-h-screen flex flex-col items-start justify-start py-20 bg-black px-4 md:px-16">
+      <div className="w-full max-w-2xl mx-auto mb-10">
+        {/* Blogs Section */}
+        <div className="text-white space-y-8 pl-2">
+          <div className="flex items-center space-x-2 text-[#0077FF]">
+            <span className="text-4xl font-bold font-mono">&gt;</span>
+            <h2 className="text-4xl font-medium tracking-wide text-white">
+              blog
+            </h2>
+          </div>
 
-        {/* Blog Posts */}
-        <div className="w-full max-w-7xl space-y-6">
-          {posts.length > 0 ? (
-            posts.map((post) => (
-              <BlogCard key={post.id} post={post} variant="default" />
-            ))
-          ) : (
-            <div className="relative w-full bg-[#1A1A1A] text-[#FFFFFF] border-4 border-[#333333] rounded-md shadow-[8px_8px_0_#333333] overflow-hidden p-4 md:p-12">
-              <div
-                className="absolute inset-0 opacity-10 pointer-events-none"
-                style={{
-                  backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
-                  backgroundSize: "8px 8px",
-                }}
-              />
-              <div className="relative text-center">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 break-words">
-                  No Blogs Available
-                </h3>
-                <p className="text-base sm:text-lg md:text-xl text-gray-300">
-                  Check back later for updates!
-                </p>
+          <div className="space-y-6 pt-2">
+            {posts.length > 0 ? (
+              posts.map((post) => (
+                <BlogCard key={post.id} post={post} variant="default" />
+              ))
+            ) : (
+              <div className="relative w-full bg-[#1A1A1A] border-2 border-[#333333] rounded-lg shadow-[4px_4px_0_#333333] overflow-hidden transition-all duration-300 hover:shadow-[6px_6px_0_#333333] p-5">
+                <div className="flex items-center justify-center py-8">
+                  <div className="text-center">
+                    <div className="flex justify-center mb-4">
+                      <FaPen className="text-4xl text-gray-500" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white tracking-tight mb-2">
+                      No Blog Posts Yet
+                    </h3>
+                    <p className="text-gray-400">
+                      Check back soon for new articles
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+      <Navbar />
+    </section>
   );
 }

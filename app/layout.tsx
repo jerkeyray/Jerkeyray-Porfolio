@@ -40,8 +40,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable}`}>
-      <body className="relative bg-gradient-to-b from-black via-gray-900 to-black overflow-y-auto">
-        {children}
+      <body className="relative overflow-y-auto bg-black">
+        <div className="relative min-h-screen">
+          {/* Content container */}
+          <div className="relative">{children}</div>
+        </div>
       </body>
     </html>
   );

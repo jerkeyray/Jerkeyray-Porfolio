@@ -14,38 +14,86 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
+  // Format date
+  const formattedDate = new Date(post.createdAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  // Generate variant-specific classes
+  const getVariantClasses = () => {
+    switch (variant) {
+      case "compact":
+        return {
+          article:
+            "bg-black border border-[#333333] rounded-md shadow-[2px_2px_0_#333333] hover:shadow-[3px_3px_0_#333333]",
+          content: "p-3",
+          title: "text-sm font-medium mb-1",
+          date: "text-xs",
+        };
+      case "featured":
+        return {
+          article:
+            "bg-black border-2 border-[#444444] rounded-lg shadow-[5px_5px_0_#444444] hover:shadow-[7px_7px_0_#444444]",
+          content: "p-5 sm:p-6",
+          title: "text-xl sm:text-2xl font-bold mb-3 sm:mb-4",
+          date: "text-sm",
+        };
+      case "enlargeable":
+        return {
+          article:
+            "bg-black border-2 border-[#333333] rounded-lg shadow-[3px_3px_0_#333333] sm:shadow-[4px_4px_0_#333333] hover:scale-[1.02]",
+          content: "p-4 sm:p-5",
+          title: "text-lg sm:text-xl font-bold mb-2 sm:mb-3",
+          date: "text-xs sm:text-sm",
+        };
+      default:
+        return {
+          article:
+            "bg-black border-2 border-[#333333] rounded-lg shadow-[3px_3px_0_#333333] sm:shadow-[4px_4px_0_#333333] hover:shadow-[5px_5px_0_#333333] sm:hover:shadow-[6px_6px_0_#333333]",
+          content: "p-4 sm:p-5",
+          title: "text-lg sm:text-xl font-bold mb-2 sm:mb-3",
+          date: "text-xs sm:text-sm",
+        };
+    }
+  };
+
+  const variantClasses = getVariantClasses();
+
   return (
     <Link href={`/blogs/${post.slug}`} className="block w-full">
       <article
-        className={`
-        relative bg-[#1A1A1A] text-white border-4 border-[#333333] rounded-md 
-        px-4 py-4 md:px-12 md:py-8 shadow-[6px_6px_0_#333333] 
-        ${
-          variant === "enlargeable"
-            ? "hover:scale-[1.02] hover:shadow-[12px_12px_0_#333333]"
-            : "hover:shadow-[8px_8px_0_#333333]"
-        }
-        transition-all cursor-pointer w-full overflow-hidden
-      `}
+        className={`relative w-full ${variantClasses.article} overflow-hidden transition-all duration-300`}
       >
+        {/* Dotted Pattern */}
         <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
+          className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
             backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
             backgroundSize: "8px 8px",
           }}
         />
-        <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-8 z-10">
-          <h2 className="font-bold break-words text-xl md:text-2xl lg:text-3xl max-w-full">
+
+        <div className={`relative z-10 ${variantClasses.content}`}>
+          {/* Title */}
+          <h3 className={`${variantClasses.title} text-white tracking-tight`}>
             {post.title}
-          </h2>
-          <div className="text-gray-300 whitespace-nowrap text-sm md:text-base shrink-0 pt-1 sm:pt-0">
-            {new Date(post.createdAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
+          </h3>
+
+          {/* Date */}
+          <div
+            className={`flex items-center text-gray-400 ${variantClasses.date}`}
+          >
+            <span>{formattedDate}</span>
           </div>
+
+          {/* Display a content preview only for featured variant */}
+          {variant === "featured" && (
+            <p className="text-gray-300 mt-2 line-clamp-2">
+              {post.content.substring(0, 120)}...
+            </p>
+          )}
         </div>
       </article>
     </Link>
