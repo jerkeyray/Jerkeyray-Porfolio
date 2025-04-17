@@ -1,5 +1,4 @@
 // components/ProjectCard.tsx
-import Image from "next/image";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { techIcons } from "@/lib/techIcons";
@@ -9,7 +8,7 @@ interface ProjectCardProps {
   title: string;
   description: string;
   tech: string[];
-  image: string;
+  image: string; // kept for backwards compatibility
   liveUrl?: string;
   githubUrl?: string;
 }
@@ -18,10 +17,9 @@ export default function ProjectCard({
   title,
   description,
   tech,
-  image,
   liveUrl,
   githubUrl,
-}: ProjectCardProps) {
+}: Omit<ProjectCardProps, "image">) {
   // Check if URLs are valid (not undefined or empty)
   const hasLiveUrl = liveUrl && liveUrl.trim() !== "";
   const hasGithubUrl = githubUrl && githubUrl.trim() !== "";
@@ -31,22 +29,13 @@ export default function ProjectCard({
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <DottedPattern />
       </div>
-      <div className="relative w-full aspect-[16/9]">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover object-center"
-          sizes="(max-width: 768px) 95vw, (max-width: 1024px) 80vw, (max-width: 1280px) 70vw, 60vw"
-        />
-      </div>
       <div className="p-6 md:p-8 space-y-6">
         <div className="flex items-center justify-between">
           {hasLiveUrl ? (
             <Link
               href={liveUrl}
               target="_blank"
-              className="transition-transform hover:scale-105  pointer-events-auto"
+              className="transition-transform hover:scale-105 pointer-events-auto"
             >
               <h3 className="text-2xl md:text-3xl font-bold text-white hover:text-blue-400 transition-colors">
                 {title}
@@ -61,7 +50,7 @@ export default function ProjectCard({
             <Link
               href={githubUrl}
               target="_blank"
-              className="inline-block p-2 transition-all hover:scale-110  pointer-events-auto"
+              className="inline-block p-2 transition-all hover:scale-110 pointer-events-auto"
             >
               <FaGithub className="text-white hover:text-blue-400 text-2xl md:text-3xl transition-colors" />
             </Link>

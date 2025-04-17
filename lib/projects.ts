@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "MovieVault",
     description:
-      "A modern movie discovery platform built with Next.js 14, featuring real-time search, bookmarking, and detailed movie information.",
+      "Movie discovery platform.",
     tech: ["Next.js", "PostgreSQL", "TypeScript", "Tailwind CSS", "Supabase"],
     image: "/project-images/movievault.png",
     liveUrl: "https://movie-vault-jerkeyray.vercel.app",

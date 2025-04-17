@@ -1,16 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+/* Remove Google Fonts import since we're using Next.js font system now */
+/* @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"); */
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: #000; /* or your dark color */
   color: #fff;
   height: 100%;
   overscroll-behavior: none; /* prevents scroll chaining glow */
-  font-family: "'Noto Sans', 'Noto Sans JP', sans-serif";
+  font-family: var(--font-inter), sans-serif;
   min-height: 100vh;
 }
 
@@ -29,7 +30,19 @@ body::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
 
-
+/* Update h1-h6 to use Inter instead of Bebas Neue */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-inter), sans-serif;
+  /* Adjust letter-spacing for Inter */
+  letter-spacing: 0.01em;
+  /* Make headings bold to compensate for not using display font */
+  font-weight: 700;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -132,5 +145,3 @@ body::-webkit-scrollbar {
     transform: translateX(0%);
   }
 }
-
-

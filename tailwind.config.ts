@@ -7,6 +7,10 @@ const config: Config = {
         spin: "spin 1s linear infinite",
         "spin-reverse": "spin 1.5s linear infinite reverse",
       },
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        // Removed the heading font family since we're using Inter for everything
+      },
     },
   },
 };

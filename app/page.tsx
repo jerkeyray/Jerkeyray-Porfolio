@@ -16,21 +16,21 @@ const Home = () => {
           <AboutMe />
         </section>
         {/* Recent Projects Section */}
-        <section className="w-full px-4 md:px-8">
+        {/* <section className="w-full px-4 md:px-8">
           <RecentProjects />
-        </section>
+        </section> */}
         {/* Tech Skills Section */}
-        <section className="w-full px-4 md:px-8">
+        {/* <section className="w-full px-4 md:px-8">
           <TechSkills />
-        </section>
+        </section> */}
         {/* Recent Blogs Section */}
-        <section className="w-full px-4 md:px-8">
+        {/* <section className="w-full px-4 md:px-8">
           <RecentBlogs />
-        </section>
+        </section> */}
         {/* Contact Me Section */}
-        <section id="contact-me" className="w-full px-4 md:px-8">
+        {/* <section id="contact-me" className="w-full px-4 md:px-8">
           <ContactMe />
-        </section>
+        </section> */}
       </div>
     </main>
   );
