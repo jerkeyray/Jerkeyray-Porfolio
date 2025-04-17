@@ -51,7 +51,7 @@ const AboutMe = () => {
         {/* Social Media Links */}
         <div className="relative mt-8 flex justify-center space-x-6 z-10">
           <a
-            href="https://github.com/jerkeyrey"
+            href="https://github.com/jerkeyray"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#FFFFFF] hover:text-[#0077FF] text-3xl"

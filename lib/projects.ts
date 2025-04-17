@@ -17,13 +17,5 @@ export const projects = [
     liveUrl: "https://interviewinator.vercel.app",
     githubUrl: "https://github.com/jerkeyrey/Interviewinator",
   },
-  {
-    title: "Interviewinator",
-    description:
-      "An AI powered interview prep platform.",
-    tech: ["Next.js", "Firebase", "TypeScript", "Tailwind CSS", "Gemini"],
-    image: "/project-images/interviewinator.png",
-    liveUrl: "https://interviewinator.vercel.app",
-    githubUrl: "https://github.com/jerkeyrey/Interviewinator",
-  },
+  
 ];
