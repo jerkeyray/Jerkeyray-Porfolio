@@ -30,7 +30,7 @@ const AboutMe = () => {
           <div
             className="absolute inset-0 opacity-20 pointer-events-none"
             style={{
-              backgroundImage: `radial-gradient(#FFFFFF 1px, transparent 1px)`,
+              backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)`,
               backgroundSize: "8px 8px",
             }}
           />

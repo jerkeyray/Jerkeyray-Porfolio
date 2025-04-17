@@ -59,16 +59,16 @@ export default function BlogsPage() {
                 <BlogCard key={post.id} post={post} variant="default" />
               ))
             ) : (
-              <div className="relative w-full bg-[#1A1A1A] border-2 border-[#333333] rounded-lg shadow-[4px_4px_0_#333333] overflow-hidden transition-all duration-300 hover:shadow-[6px_6px_0_#333333] p-5">
+              <div className="relative w-full bg-[#0D1117] border-2 border-[#21262D] rounded-lg shadow-[4px_4px_0_#21262D] overflow-hidden transition-all duration-300 hover:shadow-[6px_6px_0_#21262D] p-5">
                 <div className="flex items-center justify-center py-8">
                   <div className="text-center">
                     <div className="flex justify-center mb-4">
-                      <FaPen className="text-4xl text-gray-500" />
+                      <FaPen className="text-4xl text-[#8B949E]" />
                     </div>
-                    <h3 className="text-xl font-bold text-white tracking-tight mb-2">
+                    <h3 className="text-xl font-bold text-[#C9D1D9] tracking-tight mb-2">
                       No Blog Posts Yet
                     </h3>
-                    <p className="text-gray-400">
+                    <p className="text-[#8B949E]">
                       Check back soon for new articles
                     </p>
                   </div>
