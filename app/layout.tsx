@@ -16,18 +16,18 @@ export const metadata: Metadata = {
     title: "Aditya Srivastava",
     description: "Developer Portfolio",
     type: "website",
-    url: "https://jerkeyray.vercel.app",
+    url: "jerkeyray.com",
     images: [
       {
-        url: "https://yourwebsite.com/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "./favicon.ico",
+        width: 600,
+        height: 600,
         alt: "Aditya Srivastava Portfolio",
       },
     ],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "./favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
