@@ -72,13 +72,13 @@ const AboutMe = () => {
             </p>
             <p className="transition-colors duration-200 hover:text-white">
               17 y/o cs student, currently studying at vellore institute of
-              technology.
+              technology
             </p>
             <p className="transition-colors duration-200 hover:text-white">
-              i like to break things and fix them back while im at it.
+              i like to break things and fix them back while im at it
             </p>
             <p className="transition-colors duration-200 hover:text-white">
-              currently working on web development and backend technologies.
+              currently working on web development and backend technologies
             </p>
           </div>
 
