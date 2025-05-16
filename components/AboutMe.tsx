@@ -91,10 +91,6 @@ const AboutMe = () => {
               <FaServer className="mr-2 text-[#0077FF]" />
               <span className="text-gray-200 text-sm">Backend Systems</span>
             </div>
-            <div className="flex items-center bg-[#1F1F1F] px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg hover:bg-[#2A2A2A] transition-colors duration-300">
-              <FaCog className="mr-2 text-[#0077FF]" />
-              <span className="text-gray-200 text-sm">Low-level Systems</span>
-            </div>
           </div>
 
           {/* Social Icons Section */}

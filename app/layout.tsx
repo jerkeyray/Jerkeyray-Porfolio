@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 // Import Inter for use throughout the entire site
 const inter = Inter({
@@ -45,6 +46,7 @@ export default function RootLayout({
           {/* Content container */}
           <div className="relative">{children}</div>
         </div>
+        <Analytics />
       </body>
     </html>
   );
