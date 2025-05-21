@@ -7,6 +7,7 @@ import {
   FaCode,
   FaServer,
   FaCog,
+  FaDev,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
@@ -121,6 +122,15 @@ const AboutMe = () => {
               aria-label="LinkedIn Profile"
             >
               <FaLinkedin />
+            </a>
+            <a
+              href="https://dev.to/jerkeyray"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#0077FF] text-xl sm:text-2xl transition-all duration-300 transform hover:scale-110"
+              aria-label="Dev.to Blog"
+            >
+              <FaDev />
             </a>
             <button
               onClick={copyEmailToClipboard}
