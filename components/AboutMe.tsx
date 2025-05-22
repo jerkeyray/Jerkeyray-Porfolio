@@ -115,15 +115,6 @@ const AboutMe = () => {
               <FaXTwitter />
             </a>
             <a
-              href="https://www.linkedin.com/in/aditya-srivastava-a943a8321/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-[#0077FF] text-xl sm:text-2xl transition-all duration-300 transform hover:scale-110"
-              aria-label="LinkedIn Profile"
-            >
-              <FaLinkedin />
-            </a>
-            <a
               href="https://dev.to/jerkeyray"
               target="_blank"
               rel="noopener noreferrer"
