@@ -4,33 +4,31 @@ import Navbar from "@/components/Navbar";
 import BlogCard from "@/components/BlogCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { FaPen } from "react-icons/fa";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  slug: string;
-  content: string;
-  createdAt: string;
-}
+import { DevToArticle } from "@/lib/devto";
 
 export default function BlogsPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [articles, setArticles] = useState<DevToArticle[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchArticles = async () => {
       try {
-        const res = await fetch("/api/posts");
-        const data = await res.json();
-        setPosts(data);
+        console.log("Fetching articles from API route");
+        const response = await fetch("/api/devto");
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched articles:", data);
+        setArticles(data);
       } catch (error) {
-        console.error("Failed to fetch posts:", error);
+        console.error("Failed to fetch articles:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPosts();
+    fetchArticles();
   }, []);
 
   if (loading) {
@@ -54,9 +52,13 @@ export default function BlogsPage() {
           </div>
 
           <div className="space-y-6 pt-2">
-            {posts.length > 0 ? (
-              posts.map((post) => (
-                <BlogCard key={post.id} post={post} variant="default" />
+            {articles.length > 0 ? (
+              articles.map((article) => (
+                <BlogCard
+                  key={article.id}
+                  article={article}
+                  variant="default"
+                />
               ))
             ) : (
               <div className="relative w-full bg-[#0D1117] border-2 border-[#21262D] rounded-lg shadow-[4px_4px_0_#21262D] overflow-hidden transition-all duration-300 hover:shadow-[6px_6px_0_#21262D] p-5">

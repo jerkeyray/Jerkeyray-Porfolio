@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DevToArticle } from "@/lib/devto";
 
 interface BlogPost {
   id: number;
@@ -9,13 +10,21 @@ interface BlogPost {
 }
 
 interface BlogCardProps {
-  post: BlogPost;
+  post?: BlogPost;
+  article?: DevToArticle;
   variant?: "default" | "compact" | "featured" | "enlargeable";
 }
 
-const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
+const BlogCard = ({ post, article, variant = "default" }: BlogCardProps) => {
+  // Determine which data source to use
+  const isDevToArticle = !!article;
+  const title = isDevToArticle ? article!.title : post!.title;
+  const date = isDevToArticle ? article!.published_at : post!.createdAt;
+  const content = isDevToArticle ? article!.description : post!.content;
+  const href = isDevToArticle ? article!.url : `/blogs/${post!.slug}`;
+
   // Format date
-  const formattedDate = new Date(post.createdAt).toLocaleDateString("en-US", {
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -62,7 +71,13 @@ const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
   const variantClasses = getVariantClasses();
 
   return (
-    <Link href={`/blogs/${post.slug}`} className="block w-full">
+    <Link
+      href={href}
+      className="block w-full"
+      {...(isDevToArticle
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+    >
       <article
         className={`relative w-full ${variantClasses.article} overflow-hidden transition-all duration-300`}
       >
@@ -78,7 +93,7 @@ const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
         <div className={`relative z-10 ${variantClasses.content}`}>
           {/* Title */}
           <h3 className={`${variantClasses.title} text-white tracking-tight`}>
-            {post.title}
+            {title}
           </h3>
 
           {/* Date */}
@@ -86,12 +101,17 @@ const BlogCard = ({ post, variant = "default" }: BlogCardProps) => {
             className={`flex items-center text-gray-400 ${variantClasses.date}`}
           >
             <span>{formattedDate}</span>
+            {isDevToArticle && (
+              <span className="ml-2 text-xs bg-blue-600 text-white px-2 py-1 rounded">
+                dev.to
+              </span>
+            )}
           </div>
 
           {/* Display a content preview only for featured variant */}
           {variant === "featured" && (
             <p className="text-gray-300 mt-2 line-clamp-2">
-              {post.content.substring(0, 120)}...
+              {content.substring(0, 120)}...
             </p>
           )}
         </div>
