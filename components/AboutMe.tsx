@@ -2,11 +2,9 @@
 import React, { useState } from "react";
 import {
   FaGithub,
-  FaLinkedin,
   FaEnvelope,
   FaCode,
   FaServer,
-  FaCog,
   FaDev,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -72,18 +70,18 @@ const AboutMe = () => {
               hi, i am aditya
             </p>
             <p className="transition-colors duration-200 hover:text-white">
-              17 y/o cs student, currently studying at vellore institute of
+              18 y/o cs student, currently studying at vellore institute of
               technology
             </p>
             <p className="transition-colors duration-200 hover:text-white">
               i like to break things and fix them back while im at it
             </p>
             <p className="transition-colors duration-200 hover:text-white">
-              currently working on web development and backend technologies
+              currently messing around with web development, backend systems and math
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 sm:gap-3 pt-2 pl-4 sm:pl-6">
+          {/* <div className="flex flex-wrap gap-2 sm:gap-3 pt-2 pl-4 sm:pl-6">
             <div className="flex items-center bg-[#1F1F1F] px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg hover:bg-[#2A2A2A] transition-colors duration-300">
               <FaCode className="mr-2 text-[#0077FF]" />
               <span className="text-gray-200 text-sm">Web Dev</span>
@@ -92,7 +90,7 @@ const AboutMe = () => {
               <FaServer className="mr-2 text-[#0077FF]" />
               <span className="text-gray-200 text-sm">Backend Systems</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Social Icons Section */}
           <div className="flex items-center space-x-5 sm:space-x-6 pl-4 sm:pl-6 pt-3 sm:pt-4">
