@@ -7,4 +7,13 @@ export const projects = [
     liveUrl: "https://yudoku.jerkeyray.com",
     githubUrl: "https://github.com/jerkeyray/youtube-course-platform.git",
   },
+  {
+    title: "Hookinator",
+    description: "Webhook Toolkit for Developers",
+    tech: ["Next.js", "Go", "Tailwind CSS", "PostgreSQL"],
+    image: "/project-images/hookinator.png",
+    liveUrl: "https://hookinator.jerkeyray.com",
+    githubUrl: "https://github.com/jerkeyray/hookinator.git",
+  },
 ];
+
