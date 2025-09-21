@@ -8,8 +8,14 @@ export const projects = [
     githubUrl: "https://github.com/jerkeyray/youtube-course-platform.git",
   },
   {
+    title: "Pika Language Interpreter",
+    description: "simple interpreter for a toy programming language",
+    tech: ["Go"],
+    githubUrl: "https://github.com/jerkeyray/pika-interpreter.git",
+  },
+  {
     title: "Hookinator",
-    description: "webhook woolkit for developers",
+    description: "webhook toolkit for developers",
     tech: ["Next.js", "Go", "Tailwind CSS", "PostgreSQL"],
     image: "/project-images/hookinator.png",
     liveUrl: "https://hookinator.jerkeyray.com",
