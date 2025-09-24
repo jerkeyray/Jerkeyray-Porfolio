@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { config } from "@/lib/config";
 
+// Revalidate every hour
+export const revalidate = 3600;
+
 export async function GET() {
   try {
     const response = await fetch(
@@ -9,7 +12,6 @@ export async function GET() {
         headers: {
           "User-Agent": "Portfolio-App",
         },
-        next: { revalidate: 3600 }, // Cache for 1 hour
       }
     );
 

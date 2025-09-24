@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import "highlight.js/styles/github-dark.css";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 interface BlogPost {
@@ -18,9 +16,12 @@ interface BlogPost {
   createdAt: string;
 }
 
-export default function BlogPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+interface PageProps {
+  params: { slug: string };
+}
+
+export default function BlogPage({ params }: PageProps) {
+  const slug = params.slug;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -100,25 +101,6 @@ export default function BlogPage() {
           <ReactMarkdown
             rehypePlugins={[rehypeHighlight, rehypeRaw]}
             remarkPlugins={[remarkGfm]}
-            components={{
-              code({ inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || "");
-                return !inline && match ? (
-                  <pre className={`${className} relative overflow-x-auto`}>
-                    <div className="absolute top-0 right-0 px-2 py-1 text-xs text-gray-400 bg-[#1c1c1c] rounded-bl">
-                      {match[1]}
-                    </div>
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  </pre>
-                ) : (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
-              },
-            }}
           >
             {post.content}
           </ReactMarkdown>

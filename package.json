@@ -2,11 +2,17 @@
   "name": "portfolio_jerkeyray",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@8.15.0",
+  "engines": {
+    "node": ">=18.17.0",
+    "pnpm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf .next && rm -rf node_modules && pnpm install"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
