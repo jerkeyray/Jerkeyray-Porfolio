@@ -1,13 +1,8 @@
 "use client"; // Mark this as a client component
 import React, { useState } from "react";
-import {
-  FaGithub,
-  FaEnvelope,
-  FaCode,
-  FaServer,
-  FaDev,
-} from "react-icons/fa";
+import { FaGithub, FaEnvelope, FaDev } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 import Image from "next/image";
 
 const AboutMe = () => {
@@ -77,7 +72,8 @@ const AboutMe = () => {
               i like to break things and fix them back while im at it
             </p>
             <p className="transition-colors duration-200 hover:text-white">
-              currently messing around with web development, backend systems and math
+              currently messing around with web development, backend systems and
+              math
             </p>
           </div>
 
@@ -120,6 +116,15 @@ const AboutMe = () => {
               aria-label="Dev.to Blog"
             >
               <FaDev />
+            </a>
+            <a
+              href="https://leetcode.com/u/0tMezaewYp/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#FFA116] text-xl sm:text-2xl transition-all duration-300 transform hover:scale-110"
+              aria-label="LeetCode Profile"
+            >
+              <SiLeetcode />
             </a>
             <button
               onClick={copyEmailToClipboard}
