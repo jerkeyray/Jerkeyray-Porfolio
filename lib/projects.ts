@@ -22,10 +22,15 @@ export const projects = [
     githubUrl: "https://github.com/jerkeyray/hookinator.git",
   },
   {
+    title: "Dory",
+    description: "ffmpeg based video utility cli",
+    tech: ["Go", "ffmpeg"],
+    githubUrl: "https://github.com/jerkeyray/dory.git",
+  },
+  {
     title: "GoStore",
     description: "redis like key-value store from scratch in go",
     tech: ["Go"],
-    image: "/project-images/hookinator.png",
     githubUrl: "https://github.com/jerkeyray/gostore.git",
   }
 ];
