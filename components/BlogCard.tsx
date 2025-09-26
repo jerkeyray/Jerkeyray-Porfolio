@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DevToArticle } from "@/lib/devto";
+import { HashnodeArticle } from "@/lib/hashnode";
 
 interface BlogPost {
   id: number;
@@ -11,17 +12,24 @@ interface BlogPost {
 
 interface BlogCardProps {
   post?: BlogPost;
-  article?: DevToArticle;
+  article?: DevToArticle | HashnodeArticle;
   variant?: "default" | "compact" | "featured" | "enlargeable";
 }
 
 const BlogCard = ({ post, article, variant = "default" }: BlogCardProps) => {
   // Determine which data source to use
-  const isDevToArticle = !!article;
-  const title = isDevToArticle ? article!.title : post!.title;
-  const date = isDevToArticle ? article!.published_at : post!.createdAt;
-  const content = isDevToArticle ? article!.description : post!.content;
-  const href = isDevToArticle ? article!.url : `/blogs/${post!.slug}`;
+  const isArticle = !!article;
+  const title = isArticle ? article!.title : post!.title;
+
+  // Handle different date fields for DevTo vs Hashnode
+  const date = isArticle
+    ? "published_at" in article!
+      ? article!.published_at
+      : article!.publishedAt
+    : post!.createdAt;
+
+  const content = isArticle ? article!.description : post!.content;
+  const href = isArticle ? article!.url : `/blogs/${post!.slug}`;
 
   // Format date
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
@@ -74,9 +82,7 @@ const BlogCard = ({ post, article, variant = "default" }: BlogCardProps) => {
     <Link
       href={href}
       className="block w-full"
-      {...(isDevToArticle
-        ? { target: "_blank", rel: "noopener noreferrer" }
-        : {})}
+      {...(isArticle ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       <article
         className={`relative w-full ${variantClasses.article} overflow-hidden transition-all duration-300`}
@@ -101,9 +107,9 @@ const BlogCard = ({ post, article, variant = "default" }: BlogCardProps) => {
             className={`flex items-center text-gray-400 ${variantClasses.date}`}
           >
             <span>{formattedDate}</span>
-            {isDevToArticle && (
+            {isArticle && (
               <span className="ml-2 text-xs bg-blue-600 text-white px-2 py-1 rounded">
-                dev.to
+                {"published_at" in article! ? "dev.to" : "hashnode"}
               </span>
             )}
           </div>

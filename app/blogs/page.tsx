@@ -4,25 +4,28 @@ import Navbar from "@/components/Navbar";
 import BlogCard from "@/components/BlogCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { FaPen } from "react-icons/fa";
-import { DevToArticle } from "@/lib/devto";
+import { HashnodeArticle } from "@/lib/hashnode";
 
 export default function BlogsPage() {
-  const [articles, setArticles] = useState<DevToArticle[]>([]);
+  const [articles, setArticles] = useState<HashnodeArticle[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        console.log("Fetching articles from API route");
-        const response = await fetch("/api/devto");
+        console.log("🔄 Fetching articles from Hashnode API");
+        const response = await fetch("/api/hashnode", {
+          cache: "no-store", // Disable browser caching
+        });
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Fetched articles:", data);
+        console.log("✅ Fetched articles:", data);
+        console.log(`📊 Total articles received: ${data.length}`);
         setArticles(data);
       } catch (error) {
-        console.error("Failed to fetch articles:", error);
+        console.error("❌ Failed to fetch articles:", error);
       } finally {
         setLoading(false);
       }

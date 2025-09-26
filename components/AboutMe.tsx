@@ -1,8 +1,8 @@
 "use client"; // Mark this as a client component
 import React, { useState } from "react";
-import { FaGithub, FaEnvelope, FaDev } from "react-icons/fa";
+import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { SiLeetcode } from "react-icons/si";
+import { SiLeetcode, SiHashnode } from "react-icons/si";
 import Image from "next/image";
 
 const AboutMe = () => {
@@ -109,13 +109,13 @@ const AboutMe = () => {
               <FaXTwitter />
             </a>
             <a
-              href="https://dev.to/jerkeyray"
+              href="https://jerkeyray.hashnode.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-[#0077FF] text-xl sm:text-2xl transition-all duration-300 transform hover:scale-110"
-              aria-label="Dev.to Blog"
+              className="text-gray-400 hover:text-[#2962FF] text-xl sm:text-2xl transition-all duration-300 transform hover:scale-110"
+              aria-label="Hashnode Blog"
             >
-              <FaDev />
+              <SiHashnode />
             </a>
             <a
               href="https://leetcode.com/u/0tMezaewYp/"
