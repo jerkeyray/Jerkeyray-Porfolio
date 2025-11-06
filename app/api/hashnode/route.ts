@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
 
-// Revalidate every hour
-export const revalidate = 3600;
-
 const HASHNODE_GRAPHQL_URL = "https://gql.hashnode.com/";
 
 interface HashnodeTag {
@@ -58,6 +55,8 @@ export async function GET() {
       headers: {
         "Content-Type": "application/json",
       },
+      // Do not cache the upstream response on the server runtime
+      cache: "no-store",
       body: JSON.stringify({
         query,
         variables: { host: "jerkeyray.hashnode.dev" },
@@ -93,7 +92,12 @@ export async function GET() {
         }),
       })) || [];
 
-    return NextResponse.json(posts);
+    // Prevent CDN / edge caching of this API response so recent posts appear immediately.
+    return NextResponse.json(posts, {
+      headers: {
+        "Cache-Control": "no-store, max-age=0, s-maxage=0",
+      },
+    });
   } catch (error) {
     console.error("Error fetching Hashnode articles:", error);
     return NextResponse.json([], { status: 500 });
