@@ -28,10 +28,16 @@ export const projects = [
     githubUrl: "https://github.com/jerkeyray/dory.git",
   },
   {
+    title: "Tokbuk",
+    description: "token bucket rate limiter built in go",
+    tech: ["Go"],
+    githubUrl: "https://github.com/jerkeyray/tokbuk.git",
+  },
+  {
     title: "GoStore",
     description: "redis like key-value store from scratch in go",
     tech: ["Go"],
     githubUrl: "https://github.com/jerkeyray/gostore.git",
-  }
+  },
 ];
 
